@@ -12,13 +12,39 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import NewsletterSection from "@/components/NewsletterSection";
 import Footer from "@/components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
+import { Helmet } from "react-helmet";
 
 const Index = () => {
   const { language, isRTL } = useLanguage();
+  
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "FARAN",
+    "url": "https://faran.ae",
+    "logo": "/lovable-uploads/a2fc9b9f-ca33-4c87-9f2e-6e1b87665806.png",
+    "description": "Premium luxury oud and fragrances with a rich Arabian heritage.",
+    "sameAs": [
+      "https://www.instagram.com/faran",
+      "https://www.facebook.com/faran"
+    ],
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://faran.ae/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "AED",
+      "highPrice": "5000",
+      "lowPrice": "500",
+      "offerCount": "8"
+    }
+  };
 
   useEffect(() => {
     // Set page title
-    document.title = "FARAN | Luxury Oud & Fragrances";
+    document.title = "FARAN | Premium Luxury Oud & Fragrances";
     
     // Set RTL/LTR for the whole page
     document.documentElement.dir = isRTL ? "rtl" : "ltr";
@@ -61,6 +87,14 @@ const Index = () => {
         transition={{ duration: 0.5 }}
         className={`bg-faran-black text-white min-h-screen ${isRTL ? 'rtl' : 'ltr'}`}
       >
+        <Helmet>
+          <title>FARAN | Premium Luxury Oud & Fragrances</title>
+          <meta name="description" content="Discover FARAN - Luxury Arabian oud and fragrances crafted with centuries of tradition. Premium agarwood collections including Salla, Baby Salla, Mouri, and Joura." />
+          <script type="application/ld+json">
+            {JSON.stringify(structuredData)}
+          </script>
+        </Helmet>
+        
         <Navbar />
         <HeroSection />
         <AboutSection />
