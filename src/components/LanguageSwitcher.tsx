@@ -2,12 +2,22 @@
 import React from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Globe } from "lucide-react";
+import { toast } from "@/components/ui/use-toast";
 
 const LanguageSwitcher: React.FC = () => {
   const { language, setLanguage, isRTL } = useLanguage();
 
   const toggleLanguage = () => {
-    setLanguage(language === "en" ? "ar" : "en");
+    const newLanguage = language === "en" ? "ar" : "en";
+    setLanguage(newLanguage);
+    
+    if (newLanguage === "ar") {
+      toast({
+        title: "Arabic Coming Soon",
+        description: "Full Arabic translation will be implemented in a future update.",
+        duration: 3000,
+      });
+    }
   };
 
   return (
