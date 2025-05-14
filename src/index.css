@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Montserrat:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Montserrat:wght@100;200;300;400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -72,6 +72,7 @@
     @apply leading-relaxed;
   }
   
+  /* Standard buttons */
   .btn {
     @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-none transition-colors duration-300;
   }
@@ -84,12 +85,67 @@
     @apply bg-transparent border border-faran-gold text-faran-gold hover:bg-faran-gold hover:text-black;
   }
   
+  /* Luxury buttons */
+  .btn-luxury {
+    @apply inline-flex items-center justify-center px-8 py-4 bg-faran-gold text-black uppercase tracking-wider text-sm font-light transition-all duration-300 hover:bg-faran-darkGold relative overflow-hidden;
+  }
+  
+  .btn-luxury::before {
+    @apply content-[''] absolute top-0 left-0 w-full h-full bg-white/10 transform scale-x-0 origin-left transition-transform duration-500;
+  }
+  
+  .btn-luxury:hover::before {
+    @apply transform scale-x-100;
+  }
+  
+  .btn-luxury-outline {
+    @apply inline-flex items-center justify-center px-8 py-4 border border-faran-gold text-faran-gold uppercase tracking-wider text-sm font-light transition-all duration-300 hover:border-faran-gold/70 hover:text-white relative overflow-hidden;
+  }
+  
+  .btn-luxury-outline::after {
+    @apply content-[''] absolute bottom-0 left-0 w-0 h-px bg-faran-gold transition-all duration-500;
+  }
+  
+  .btn-luxury-outline:hover::after {
+    @apply w-full;
+  }
+  
+  /* Section styling */
   .section {
-    @apply py-16 md:py-24;
+    @apply py-20 md:py-32;
+  }
+  
+  .section-title {
+    @apply relative inline-block mb-16;
+  }
+  
+  .section-title::after {
+    @apply content-[''] absolute left-0 -bottom-3 h-px w-20 bg-faran-gold;
   }
   
   .container-custom {
     @apply px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl;
+  }
+  
+  /* Luxury card */
+  .luxury-card {
+    @apply relative overflow-hidden bg-faran-charcoal border border-faran-gold/10 transition-all duration-500 hover:border-faran-gold/30;
+  }
+  
+  .luxury-card::before {
+    @apply content-[''] absolute top-0 left-0 w-0 h-px bg-faran-gold transition-all duration-700 ease-in-out;
+  }
+  
+  .luxury-card:hover::before {
+    @apply w-full;
+  }
+  
+  .luxury-card::after {
+    @apply content-[''] absolute top-0 right-0 h-0 w-px bg-faran-gold transition-all duration-700 ease-in-out delay-100;
+  }
+  
+  .luxury-card:hover::after {
+    @apply h-full;
   }
   
   /* RTL support */
@@ -158,6 +214,15 @@
     }
   }
   
+  @keyframes shimmer {
+    0% {
+      background-position: -100% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+  
   .fade-in {
     opacity: 0;
     animation: fadeIn 1.5s ease-out forwards;
@@ -181,6 +246,17 @@
     opacity: 0;
   }
   
+  /* Shimmer effect */
+  .shimmer {
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(212, 175, 55, 0.1) 50%, 
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+  
   /* Hover effects */
   .hover-shine {
     position: relative;
@@ -197,7 +273,8 @@
     background: linear-gradient(
       to right,
       rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0.3) 100%
+      rgba(212, 175, 55, 0.15) 50%,
+      rgba(255, 255, 255, 0) 100%
     );
     transform: skewX(-25deg);
     transition: all 0.75s;
@@ -205,6 +282,29 @@
   
   .hover-shine:hover::after {
     left: 100%;
+  }
+  
+  /* Gold border effect */
+  .gold-border {
+    @apply relative p-[1px];
+  }
+  
+  .gold-border::before {
+    @apply content-[''] absolute inset-0 p-[1px] bg-gradient-to-r from-faran-gold/20 via-faran-gold to-faran-gold/20 -z-10;
+  }
+  
+  .gold-border-content {
+    @apply bg-faran-black z-10 relative w-full h-full;
+  }
+  
+  /* Product card hover effect */
+  .product-card-hover {
+    @apply transition-all duration-700;
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+  }
+  
+  .product-card-hover:hover {
+    box-shadow: 0 10px 30px -5px rgba(212, 175, 55, 0.2);
   }
   
   /* Remove browser outline for accessible navigation */
@@ -215,19 +315,19 @@
   
   /* Scrollbar customization */
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
   }
   
   ::-webkit-scrollbar-track {
-    background: #1a1a1a;
+    background: #151515;
   }
   
   ::-webkit-scrollbar-thumb {
-    background: #D4AF37;
-    border-radius: 5px;
+    background: linear-gradient(to bottom, #D4AF37, #9D7E2E);
+    border-radius: 4px;
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    background: #9D7E2E;
+    background: #D4AF37;
   }
 }

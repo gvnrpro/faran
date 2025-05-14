@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { AspectRatio } from "./ui/aspect-ratio";
+import { motion } from "framer-motion";
 
 interface IngredientTabProps {
   title: string;
@@ -12,12 +13,21 @@ interface IngredientTabProps {
 const IngredientTab: React.FC<IngredientTabProps> = ({ title, isActive, onClick }) => {
   return (
     <button
-      className={`py-3 px-4 text-left border-b-2 transition-colors duration-300 ${
-        isActive ? "border-faran-gold text-faran-gold" : "border-transparent text-gray-400 hover:text-gray-300"
-      }`}
+      className={`py-4 px-5 text-left border-b-2 transition-all duration-500 ${
+        isActive 
+          ? "border-faran-gold text-faran-gold" 
+          : "border-gray-700/50 text-gray-400 hover:text-gray-300 hover:border-gray-600"
+      } focus:outline-none`}
       onClick={onClick}
     >
-      {title}
+      <span className="relative overflow-hidden block">
+        {title}
+        <span 
+          className={`absolute left-0 bottom-0 w-full h-px bg-faran-gold transform ${
+            isActive ? 'scale-x-100' : 'scale-x-0'
+          } transition-transform duration-300 origin-left`} 
+        />
+      </span>
     </button>
   );
 };
@@ -50,18 +60,31 @@ const CraftsmanshipSection = () => {
   ];
 
   return (
-    <section id="craftsmanship" className="section bg-faran-black">
+    <section id="craftsmanship" className="section bg-gradient-to-b from-faran-black to-faran-charcoal">
       <div className="container-custom">
-        <div className="text-center mb-20">
-          <h2 className="text-faran-gold mb-3">Craftsmanship & Ingredients</h2>
-          <p className="text-white/80 max-w-2xl mx-auto">
-            Our Agarwood is not harvested. It is honored. Discover the exceptional materials that form the heart of FARAN.
+        <motion.div 
+          className="text-center mb-24"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <h2 className="text-faran-gold mb-3 font-light tracking-wide">Craftsmanship & Ingredients</h2>
+          <div className="w-24 h-px mx-auto bg-faran-gold/40 mb-5"></div>
+          <p className="text-white/80 max-w-2xl mx-auto font-light">
+            Our Agarwood is not merely harvested. It is honored. Discover the exceptional materials that form the heart of FARAN.
           </p>
-        </div>
+        </motion.div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className={isRTL ? 'order-2' : 'order-1'}>
-            <div className="mb-8 border-b border-gray-700">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <motion.div 
+            className={isRTL ? 'order-2' : 'order-1'}
+            initial={{ opacity: 0, x: isRTL ? 50 : -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            <div className="mb-12 border-b border-gray-700/40 flex overflow-x-auto hide-scrollbar">
               {ingredients.map((ingredient, index) => (
                 <IngredientTab
                   key={index}
@@ -72,69 +95,104 @@ const CraftsmanshipSection = () => {
               ))}
             </div>
             
-            <div className="pl-1">
-              <h3 className="text-faran-gold text-xl mb-4 font-serif">
+            <motion.div 
+              className="pl-1"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6 }}
+              key={activeTab} // Re-render on tab change
+            >
+              <h3 className="text-faran-gold text-xl mb-6 font-serif font-light">
                 {ingredients[activeTab].title}
               </h3>
-              <p className="text-white/80 leading-relaxed mb-8">
+              <p className="text-white/80 leading-relaxed mb-10 font-light">
                 {ingredients[activeTab].description}
               </p>
               
               <div className="flex items-center mb-10">
-                <div className="w-8 h-px bg-faran-gold mr-4"></div>
-                <span className="text-faran-gold text-sm uppercase tracking-wider">Ethically Sourced</span>
+                <div className="w-10 h-px bg-faran-gold/70 mr-4"></div>
+                <span className="text-faran-gold text-sm uppercase tracking-wider font-light">Ethically Sourced</span>
               </div>
               
-              <a href="#" className="btn btn-secondary">Learn About Our Process</a>
-            </div>
-          </div>
+              <a href="#" className="btn-luxury-outline">Learn About Our Process</a>
+            </motion.div>
+          </motion.div>
           
-          <div className={`relative ${isRTL ? 'order-1' : 'order-2'}`}>
-            <div className="aspect-[4/5] bg-faran-beige/5 p-4">
-              <AspectRatio ratio={4/5} className="overflow-hidden">
-                <img 
+          <motion.div 
+            className={`relative gold-border ${isRTL ? 'order-1' : 'order-2'}`}
+            initial={{ opacity: 0, x: isRTL ? -50 : 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            <div className="gold-border-content">
+              <div className="aspect-[4/5] bg-faran-beige/5 relative overflow-hidden">
+                <motion.img 
                   src={ingredients[activeTab].image} 
                   alt={ingredients[activeTab].title} 
-                  className="w-full h-full object-cover transition-all duration-500 ease-in-out"
+                  className="w-full h-full object-cover"
+                  initial={{ opacity: 0, scale: 1.05 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8 }}
+                  key={activeTab}
                 />
-              </AspectRatio>
+                <div className="absolute inset-0 bg-gradient-to-t from-faran-black to-transparent opacity-30"></div>
+              </div>
             </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-faran-black to-transparent opacity-30"></div>
-            <div className="absolute bottom-4 right-4 flex items-center">
-              <span className="bg-black/70 text-faran-gold text-xs px-3 py-1 rounded-sm">FARAN Seal of Authenticity</span>
+            
+            <div className="absolute bottom-5 right-5 z-10">
+              <div className="bg-black/70 backdrop-blur-sm p-2 border border-faran-gold/20">
+                <img 
+                  src="/lovable-uploads/a2fc9b9f-ca33-4c87-9f2e-6e1b87665806.png" 
+                  alt="FARAN Seal of Authenticity" 
+                  className="w-14 h-14 object-contain opacity-90"
+                />
+              </div>
             </div>
-          </div>
+          </motion.div>
         </div>
         
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="bg-faran-beige/5 p-3 aspect-square">
-            <img 
-              src="/lovable-uploads/74f39662-0486-4685-8439-e0f8d2343a16.png" 
-              alt="Authentic Agarwood" 
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="bg-faran-beige/5 p-3 aspect-square">
-            <img 
-              src="/lovable-uploads/c3d22462-b827-4392-aa31-52651e0b2b19.png" 
-              alt="Premium Agarwood" 
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="bg-faran-beige/5 p-3 aspect-square">
-            <img 
-              src="/lovable-uploads/528e54d7-7ac0-459b-9ad0-e2989ef086e9.png" 
-              alt="Rare Agarwood Collection" 
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="bg-faran-beige/5 p-3 aspect-square">
-            <img 
-              src="/lovable-uploads/a7a7fd34-ff28-451e-ad1d-d4ceeb0e9d3b.png" 
-              alt="Exclusive Agarwood Selection" 
-              className="w-full h-full object-cover"
-            />
-          </div>
+        <div className="mt-20">
+          <motion.div 
+            className="grid grid-cols-2 md:grid-cols-4 gap-5"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            <div className="bg-faran-beige/5 aspect-square relative overflow-hidden group">
+              <img 
+                src="/lovable-uploads/74f39662-0486-4685-8439-e0f8d2343a16.png" 
+                alt="Authentic Agarwood" 
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-faran-black/80 via-transparent to-transparent"></div>
+            </div>
+            <div className="bg-faran-beige/5 aspect-square relative overflow-hidden group">
+              <img 
+                src="/lovable-uploads/c3d22462-b827-4392-aa31-52651e0b2b19.png" 
+                alt="Premium Agarwood" 
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-faran-black/80 via-transparent to-transparent"></div>
+            </div>
+            <div className="bg-faran-beige/5 aspect-square relative overflow-hidden group">
+              <img 
+                src="/lovable-uploads/528e54d7-7ac0-459b-9ad0-e2989ef086e9.png" 
+                alt="Rare Agarwood Collection" 
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-faran-black/80 via-transparent to-transparent"></div>
+            </div>
+            <div className="bg-faran-beige/5 aspect-square relative overflow-hidden group">
+              <img 
+                src="/lovable-uploads/a7a7fd34-ff28-451e-ad1d-d4ceeb0e9d3b.png" 
+                alt="Exclusive Agarwood Selection" 
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-faran-black/80 via-transparent to-transparent"></div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
