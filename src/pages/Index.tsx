@@ -1,5 +1,6 @@
 
 import React, { useEffect } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
@@ -12,9 +13,14 @@ import NewsletterSection from "@/components/NewsletterSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
+  const { language, isRTL } = useLanguage();
+
   useEffect(() => {
     // Set page title
     document.title = "FARAN | Luxury Oud & Fragrances";
+    
+    // Set RTL/LTR for the whole page
+    document.documentElement.dir = isRTL ? "rtl" : "ltr";
     
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -41,10 +47,10 @@ const Index = () => {
         });
       });
     };
-  }, []);
+  }, [language, isRTL]);
 
   return (
-    <div className="bg-faran-black text-white min-h-screen">
+    <div className={`bg-faran-black text-white min-h-screen ${isRTL ? 'rtl' : 'ltr'}`}>
       <Navbar />
       <HeroSection />
       <AboutSection />
