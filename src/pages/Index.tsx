@@ -12,7 +12,7 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import NewsletterSection from "@/components/NewsletterSection";
 import Footer from "@/components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
-import { Helmet } from "react-helmet";
+import SEO from "@/components/SEO";
 
 const Index = () => {
   const { language, isRTL } = useLanguage();
@@ -43,9 +43,6 @@ const Index = () => {
   };
 
   useEffect(() => {
-    // Set page title
-    document.title = "FARAN | Premium Luxury Oud & Fragrances";
-    
     // Set RTL/LTR for the whole page
     document.documentElement.dir = isRTL ? "rtl" : "ltr";
     document.documentElement.lang = isRTL ? "ar" : "en";
@@ -87,13 +84,11 @@ const Index = () => {
         transition={{ duration: 0.5 }}
         className={`bg-faran-black text-white min-h-screen ${isRTL ? 'rtl' : 'ltr'}`}
       >
-        <Helmet>
-          <title>FARAN | Premium Luxury Oud & Fragrances</title>
-          <meta name="description" content="Discover FARAN - Luxury Arabian oud and fragrances crafted with centuries of tradition. Premium agarwood collections including Salla, Baby Salla, Mouri, and Joura." />
+        <SEO>
           <script type="application/ld+json">
             {JSON.stringify(structuredData)}
           </script>
-        </Helmet>
+        </SEO>
         
         <Navbar />
         <HeroSection />
