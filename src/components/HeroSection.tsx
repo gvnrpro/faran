@@ -34,7 +34,7 @@ const HeroSection = () => {
     <section 
       id="home" 
       ref={sectionRef}
-      className={`relative h-screen flex items-center justify-center overflow-hidden ${isRTL ? 'rtl' : 'ltr'}`}
+      className={`relative h-screen w-full flex items-center justify-center overflow-hidden ${isRTL ? 'rtl' : 'ltr'}`}
     >
       {/* Background with parallax effect */}
       <div 
@@ -61,14 +61,28 @@ const HeroSection = () => {
         className="container-custom relative z-10 text-center mx-auto px-4"
       >
         <div>
+          {/* Logo */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            className="mb-6"
+          >
+            <img 
+              src="/lovable-uploads/a206e9b1-f855-4dae-bf84-b9e4a1e92871.png" 
+              alt="FARAN" 
+              className="h-24 md:h-28 mx-auto"
+            />
+          </motion.div>
+          
           <motion.h1 
             className="text-white mb-8 font-serif"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            <span className="block text-faran-gold text-5xl md:text-7xl mb-3 font-light tracking-wider">FARAN</span>
-            <span className="block text-xl md:text-2xl font-light tracking-[0.3em] mt-2 text-white/90">{t("hero.tagline")}</span>
+            <span className="block text-2xl md:text-3xl font-light tracking-wider mt-2 text-white/90">FARAN: The Scent Inherited.</span>
+            <span className="block text-xl md:text-2xl font-light tracking-wide mt-3 text-faran-gold">A Legacy in Fragrance</span>
           </motion.h1>
           
           <motion.div 
@@ -84,7 +98,7 @@ const HeroSection = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.7 }}
           >
-            {t("hero.description")}
+            FARAN is a house of memory. Of mastery. Born from the desert winds and ancient trade routes, FARAN distills rare Agarwood into olfactory heritage. This is not fragrance for the many. This is for those who understand. Those who recognize the honor of scent.
           </motion.p>
           
           <motion.div 
@@ -94,10 +108,10 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 1 }}
           >
             <a href="#collection" className="btn-luxury">
-              {t("hero.cta1")}
+              Shop The Collection
             </a>
-            <a href="#craftsmanship" className="btn-luxury-outline">
-              {t("hero.cta2")}
+            <a href="#about" className="btn-luxury-outline">
+              Learn More About FARAN
             </a>
           </motion.div>
         </div>
@@ -117,7 +131,7 @@ const HeroSection = () => {
         />
         <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center">
           <img 
-            src="/lovable-uploads/a2fc9b9f-ca33-4c87-9f2e-6e1b87665806.png" 
+            src="/lovable-uploads/a206e9b1-f855-4dae-bf84-b9e4a1e92871.png" 
             alt="FARAN Seal" 
             className="w-10 h-10 object-contain"
           />

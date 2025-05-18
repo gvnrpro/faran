@@ -22,7 +22,7 @@ const Index = () => {
     "@type": "Organization",
     "name": "FARAN",
     "url": "https://faran.ae",
-    "logo": "/lovable-uploads/a2fc9b9f-ca33-4c87-9f2e-6e1b87665806.png",
+    "logo": "/lovable-uploads/a206e9b1-f855-4dae-bf84-b9e4a1e92871.png", // Updated to new logo
     "description": "Premium luxury oud and fragrances with a rich Arabian heritage.",
     "sameAs": [
       "https://www.instagram.com/faran",
@@ -84,7 +84,9 @@ const Index = () => {
         transition={{ duration: 0.5 }}
         className={`bg-faran-black text-white min-h-screen ${isRTL ? 'rtl' : 'ltr'}`}
       >
-        <SEO>
+        <SEO 
+          ogImage="/lovable-uploads/a206e9b1-f855-4dae-bf84-b9e4a1e92871.png" // Update og:image to new logo
+        >
           <script type="application/ld+json">
             {JSON.stringify(structuredData)}
           </script>
