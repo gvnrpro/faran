@@ -1,21 +1,41 @@
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { motion } from "framer-motion";
 
 const CustomOrderHero = () => {
   const { t, isRTL } = useLanguage();
+  const [activeImage, setActiveImage] = useState(0);
+  
+  const heroImages = [
+    "/lovable-uploads/e1969beb-317c-40fe-8a64-610474e345c6.png",
+    "/lovable-uploads/4c1298de-d9f2-4fb7-9c77-16568829518c.png"
+  ];
+
+  // Image transition effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveImage((current) => (current === 0 ? 1 : 0));
+    }, 7000); // Transition every 7 seconds
+    
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="relative h-[70vh] min-h-[600px] w-full overflow-hidden flex items-center justify-center">
-      {/* Background image with overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ 
-          backgroundImage: "url('/lovable-uploads/a2fc9b9f-ca33-4c87-9f2e-6e1b87665806.png')",
-          filter: "brightness(0.4)"
-        }}
-      ></div>
+      {/* Background image with transition */}
+      {heroImages.map((image, index) => (
+        <div 
+          key={image}
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1500"
+          style={{ 
+            backgroundImage: `url('${image}')`,
+            opacity: index === activeImage ? 1 : 0,
+            filter: "brightness(0.4)",
+            transitionDuration: "1.5s"
+          }}
+        ></div>
+      ))}
       
       {/* Subtle gold gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-faran-black/40 via-transparent to-faran-black"></div>

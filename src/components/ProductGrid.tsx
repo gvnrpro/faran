@@ -14,7 +14,7 @@ const sampleProducts = [
     type: "Perfume Oil",
     price: 1200,
     currency: "AED",
-    image: "/lovable-uploads/a7a7fd34-ff28-451e-ad1d-d4ceeb0e9d3b.png",
+    image: "/lovable-uploads/423a1394-6e8b-4d7a-b064-cd8cd512bb8d.png",
     description: "Notes of rare Indian agarwood, precious ambergris, and mountain-harvested saffron create a scent worthy of nobility."
   },
   {
@@ -24,7 +24,7 @@ const sampleProducts = [
     type: "Perfume Oil",
     price: 950,
     currency: "AED",
-    image: "/lovable-uploads/a7a7fd34-ff28-451e-ad1d-d4ceeb0e9d3b.png",
+    image: "/lovable-uploads/bb67914c-f910-45dd-b446-aeed9a69a0fd.png",
     description: "A warm embrace of aged amber, vanilla orchid, and Moroccan cedar that evolves beautifully throughout the day."
   },
   {
@@ -34,7 +34,7 @@ const sampleProducts = [
     type: "Concentrated Perfume",
     price: 1500,
     currency: "AED",
-    image: "/lovable-uploads/a7a7fd34-ff28-451e-ad1d-d4ceeb0e9d3b.png",
+    image: "/lovable-uploads/e0bc621b-a964-4e70-9b24-c74ab6810dae.png",
     description: "The mystique of the Arabian night captured with notes of midnight jasmine, frankincense, and Cambodian oud."
   },
   {
@@ -44,12 +44,12 @@ const sampleProducts = [
     type: "Luxury Perfume",
     price: 2200,
     currency: "AED",
-    image: "/lovable-uploads/a7a7fd34-ff28-451e-ad1d-d4ceeb0e9d3b.png",
+    image: "/lovable-uploads/423a1394-6e8b-4d7a-b064-cd8cd512bb8d.png",
     description: "A majestic blend of the finest aged agarwood, Bulgarian rose, and sandalwood for those who lead."
   }
 ];
 
-// Sample oud products
+// Update oud products with uploaded images
 const sampleOudProducts = [
   {
     id: "indian-salla",
@@ -59,7 +59,7 @@ const sampleOudProducts = [
     price: 600,
     pricePerGram: true,
     currency: "AED",
-    image: "/lovable-uploads/8412a703-9f82-4b78-b579-4929fb6c743f.png",
+    image: "/lovable-uploads/af52e074-28e0-4c42-815b-a0498fedbf0e.png",
     description: "From the misty forests of Northeast India, known for its sweet, deep, and balsamic notes with subtle hints of fruit."
   },
   {
@@ -70,7 +70,7 @@ const sampleOudProducts = [
     price: 450,
     pricePerGram: true,
     currency: "AED",
-    image: "/lovable-uploads/8412a703-9f82-4b78-b579-4929fb6c743f.png",
+    image: "/lovable-uploads/6414b32e-f68e-4fd6-8f48-e04c77e210ee.png",
     description: "A more delicate variant of Salla offering a lighter but equally complex aroma, sustainably harvested."
   },
   {
@@ -81,7 +81,7 @@ const sampleOudProducts = [
     price: 700,
     pricePerGram: true,
     currency: "AED",
-    image: "/lovable-uploads/8412a703-9f82-4b78-b579-4929fb6c743f.png",
+    image: "/lovable-uploads/f3fe8f44-cb5b-48e3-bfae-8f1a1353cda4.png",
     description: "Presents a distinctive character with rich earthy undertones and a subtle sweetness that evolves over time."
   },
   {
@@ -92,8 +92,30 @@ const sampleOudProducts = [
     price: 900,
     pricePerGram: true,
     currency: "AED",
-    image: "/lovable-uploads/8412a703-9f82-4b78-b579-4929fb6c743f.png",
+    image: "/lovable-uploads/595eafb4-7374-49a2-929c-240c983567af.png",
     description: "The rarest of our Indian varieties, offering complex notes of spice, honeyed fruits, and a distinctive vanillic sweetness."
+  }
+];
+
+// Sample testimonials with masked customer names
+const testimonials = [
+  {
+    id: "t1",
+    name: "MXXXXX A. XXX",
+    title: "Oud Collector",
+    quote: "The Baby Salla from FARAN has a complexity that I've rarely experienced. Its delicate notes unfold over time, revealing new dimensions."
+  },
+  {
+    id: "t2",
+    name: "SXXXXX XXX MXXXXX",
+    title: "Fragrance Connoisseur",
+    quote: "The authenticity of FARAN's Indian Agarwood is beyond compare. I appreciate the transparency in sourcing and the commitment to quality."
+  },
+  {
+    id: "t3",
+    name: "AXXXXX XXX RXXXXX",
+    title: "Oud Enthusiast",
+    quote: "Joura Agarwood from FARAN has become the centerpiece of my collection. Its rich profile is truly a testament to their expertise."
   }
 ];
 
@@ -211,6 +233,40 @@ const ProductGrid = () => {
             </div>
           </div>
         )}
+        
+        {/* Customer Testimonials Section */}
+        <div className="mt-32">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-serif mb-4">
+              {isRTL ? "شهادات العملاء" : "Customer Testimonials"}
+            </h2>
+            <div className="w-20 h-[1px] bg-faran-gold mx-auto mb-6"></div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+            {testimonials.map((item) => (
+              <motion.div 
+                key={item.id}
+                className="bg-faran-black/50 border border-faran-gold/20 p-6 rounded-sm"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
+                <blockquote className="text-gray-300 italic mb-4">"{item.quote}"</blockquote>
+                <div className="flex items-center">
+                  <div className="w-8 h-8 rounded-full bg-faran-gold/30 flex items-center justify-center text-faran-gold">
+                    {item.name.charAt(0)}
+                  </div>
+                  <div className="ml-3">
+                    <p className="text-faran-gold font-medium">{item.name}</p>
+                    <p className="text-sm text-gray-400">{item.title}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

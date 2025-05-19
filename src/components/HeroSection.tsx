@@ -61,7 +61,6 @@ const HeroSection = () => {
         className="container-custom relative z-10 text-center mx-auto px-4"
       >
         <div>
-          {/* Logo */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -125,7 +124,7 @@ const HeroSection = () => {
         transition={{ duration: 1.2, delay: 0.8 }}
       >
         <img 
-          src="/lovable-uploads/03c8d73e-c8cd-426d-a331-5dcf3d592e6d.png"
+          src="/lovable-uploads/423a1394-6e8b-4d7a-b064-cd8cd512bb8d.png"
           alt="FARAN Luxury Oud" 
           className="w-full drop-shadow-2xl"
         />

@@ -1,21 +1,41 @@
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { motion } from "framer-motion";
 
 const ShopHero = () => {
   const { t, isRTL } = useLanguage();
+  const [activeImage, setActiveImage] = useState(0);
+  
+  const heroImages = [
+    "/lovable-uploads/bb67914c-f910-45dd-b446-aeed9a69a0fd.png", // Elegant perfume in archway
+    "/lovable-uploads/e0bc621b-a964-4e70-9b24-c74ab6810dae.png", // Perfume with smoke
+  ];
+
+  // Image transition effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveImage((current) => (current === 0 ? 1 : 0));
+    }, 7000); // Transition every 7 seconds
+    
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="relative h-[60vh] min-h-[500px] w-full overflow-hidden flex items-center justify-center">
-      {/* Background image with overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ 
-          backgroundImage: "url('/lovable-uploads/35481a9f-335c-43ab-b469-521047880516.png')",
-          filter: "brightness(0.4)"
-        }}
-      ></div>
+      {/* Background image with transition */}
+      {heroImages.map((image, index) => (
+        <div 
+          key={image}
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1500"
+          style={{ 
+            backgroundImage: `url('${image}')`,
+            opacity: index === activeImage ? 1 : 0,
+            filter: "brightness(0.4)",
+            transitionDuration: "1.5s"
+          }}
+        ></div>
+      ))}
       
       {/* Subtle gold gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-faran-black/40 via-transparent to-faran-black"></div>
