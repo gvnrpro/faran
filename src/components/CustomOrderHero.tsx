@@ -1,0 +1,58 @@
+
+import React from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { motion } from "framer-motion";
+
+const CustomOrderHero = () => {
+  const { t, isRTL } = useLanguage();
+
+  return (
+    <section className="relative h-[70vh] min-h-[600px] w-full overflow-hidden flex items-center justify-center">
+      {/* Background image with overlay */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ 
+          backgroundImage: "url('/lovable-uploads/a2fc9b9f-ca33-4c87-9f2e-6e1b87665806.png')",
+          filter: "brightness(0.4)"
+        }}
+      ></div>
+      
+      {/* Subtle gold gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-faran-black/40 via-transparent to-faran-black"></div>
+      
+      {/* Content */}
+      <div className="container-custom relative z-10 text-center px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="max-w-3xl mx-auto"
+        >
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif mb-6 text-white">
+            {isRTL ? "طلبات مخصصة" : "Custom Orders"}
+          </h1>
+          
+          <p className="text-lg md:text-xl font-light mb-8 text-gray-200 max-w-2xl mx-auto">
+            {isRTL 
+              ? "تجربة فريدة من نوعها حيث يقوم حرفيونا بتصميم عود مخصص يعكس هويتك وذوقك الفريد. إرث العطر، مُصمم خصيصًا لك."
+              : "An unparalleled experience where our master craftsmen create a bespoke oud that reflects your unique identity and preferences. A fragrance legacy, crafted exclusively for you."}
+          </p>
+          
+          <div className="w-20 h-[1px] bg-faran-gold mx-auto mb-8"></div>
+          
+          <a 
+            href="#custom-form" 
+            className="btn-luxury-outline px-12 py-4"
+          >
+            {isRTL ? "ابدأ رحلتك" : "Begin Your Journey"}
+          </a>
+        </motion.div>
+      </div>
+      
+      {/* Decorative elements */}
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-faran-black to-transparent"></div>
+    </section>
+  );
+};
+
+export default CustomOrderHero;
