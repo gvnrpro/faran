@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useForm } from "react-hook-form";
@@ -9,7 +8,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import { mail } from "lucide-react";
+import { Mail } from "lucide-react";
 
 // Form validation schema
 const formSchema = z.object({
@@ -212,7 +211,7 @@ const CustomOrderForm = () => {
                       <span>{isRTL ? "جاري الإرسال..." : "Submitting..."}</span>
                     ) : (
                       <>
-                        <mail className="w-4 h-4" />
+                        <Mail className="w-4 h-4" />
                         <span>{isRTL ? "إرسال الطلب" : "Submit Request"}</span>
                       </>
                     )}

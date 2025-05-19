@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -5,7 +6,7 @@ import { Menu } from "lucide-react";
 import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
-  const { language, toggleLanguage, isRTL } = useLanguage();
+  const { language, setLanguage, isRTL } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -15,6 +16,11 @@ const Navbar = () => {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+  
+  // Create the toggleLanguage function since it's not provided by the context
+  const toggleLanguage = () => {
+    setLanguage(language === 'en' ? 'ar' : 'en');
   };
 
   const navItems = [

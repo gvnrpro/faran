@@ -2,28 +2,28 @@
 import React from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { motion } from "framer-motion";
-import { package_open, file_pen, clipboard_check } from "lucide-react";
+import { PackageOpen, FilePen, ClipboardCheck } from "lucide-react";
 
 const CustomOrderProcess = () => {
   const { isRTL } = useLanguage();
 
   const processSteps = [
     {
-      icon: file_pen,
+      icon: FilePen,
       title: isRTL ? "استشارة متخصصة" : "Personalized Consultation",
       description: isRTL 
         ? "نبدأ بجلسة استشارية متعمقة لفهم تفضيلاتك وذكرياتك العطرية والمشاعر التي ترغب في استحضارها."
         : "We begin with an in-depth consultation to understand your preferences, olfactory memories, and the emotions you wish to evoke."
     },
     {
-      icon: package_open,
+      icon: PackageOpen,
       title: isRTL ? "إبداع متقن" : "Artisanal Creation",
       description: isRTL 
         ? "يقوم حرفيونا باختيار وتشكيل أجود أنواع العود وفق رؤيتك، مع إرسال عينات للتذوق والتعديل."
         : "Our master craftsmen select and shape the finest oud according to your vision, with samples sent for tasting and refinement."
     },
     {
-      icon: clipboard_check,
+      icon: ClipboardCheck,
       title: isRTL ? "إرث استثنائي" : "Exclusive Legacy",
       description: isRTL 
         ? "تستلم إبداعًا عطريًا فريدًا مع شهادة أصالة وتوثيق للعملية الكاملة وتاريخ العود المستخدم."
