@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useParams } from "react-router-dom";
@@ -6,7 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
 import SEO from "@/components/SEO";
-import { Whatsapp } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 
 // Define proper interfaces for our product types
 interface ProductBase {
@@ -426,7 +425,7 @@ const ProductDetail = () => {
                     rel="noopener noreferrer" 
                     className="btn-luxury w-full py-4 flex items-center justify-center gap-2"
                   >
-                    <Whatsapp size={18} />
+                    <MessageCircle size={18} />
                     {isRTL ? "اطلب عبر واتساب" : "Order via WhatsApp"}
                   </a>
                 </div>
