@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, WhatsappIcon } from "lucide-react";
+import { Menu, Whatsapp } from "lucide-react";
 import { Link, useLocation } from 'react-router-dom';
 import LanguageSwitcher from "./LanguageSwitcher";
 
@@ -75,7 +75,7 @@ const Navbar = () => {
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 text-gray-300 hover:text-white transition-colors duration-300"
           >
-            <WhatsappIcon size={16} />
+            <Whatsapp size={16} />
             <span>WhatsApp</span>
           </a>
           
@@ -119,7 +119,7 @@ const Navbar = () => {
                   className="flex items-center gap-1.5 text-gray-300 hover:text-white transition-colors duration-300 py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <WhatsappIcon size={16} />
+                  <Whatsapp size={16} />
                   <span>WhatsApp</span>
                 </a>
               </div>
