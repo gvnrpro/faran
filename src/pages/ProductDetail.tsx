@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useParams } from "react-router-dom";
@@ -6,6 +5,30 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
 import SEO from "@/components/SEO";
+
+// Define proper interfaces for our product types
+interface ProductBase {
+  id: string;
+  name: string;
+  subtitle: string;
+  type: string;
+  price: number;
+  currency: string;
+  images: string[];
+  description: string;
+  detailedDescription: string;
+  origin: string;
+  scent: {
+    top: string;
+    middle: string;
+    base: string;
+  };
+}
+
+// Extend the base interface for products with optional pricePerGram
+interface Product extends ProductBase {
+  pricePerGram?: boolean;
+}
 
 const ProductDetail = () => {
   const { productId } = useParams<{ productId: string }>();
