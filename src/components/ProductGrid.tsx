@@ -4,96 +4,113 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import ProductCard from "./ProductCard";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-// Sample product data - in a real app, this would come from an API
-const sampleProducts = [
+// Product data for the 8 requested products
+const oudProducts = [
   {
-    id: "royal-oud",
-    name: "Royal Oud",
-    subtitle: "Signature Collection",
-    type: "Perfume Oil",
-    price: 1200,
-    currency: "AED",
-    image: "/lovable-uploads/423a1394-6e8b-4d7a-b064-cd8cd512bb8d.png",
-    description: "Notes of rare Indian agarwood, precious ambergris, and mountain-harvested saffron create a scent worthy of nobility."
-  },
-  {
-    id: "amber-accord",
-    name: "Amber Accord",
-    subtitle: "Heritage Collection",
-    type: "Perfume Oil",
-    price: 950,
-    currency: "AED",
-    image: "/lovable-uploads/bb67914c-f910-45dd-b446-aeed9a69a0fd.png",
-    description: "A warm embrace of aged amber, vanilla orchid, and Moroccan cedar that evolves beautifully throughout the day."
-  },
-  {
-    id: "desert-night",
-    name: "Desert Night",
-    subtitle: "Exclusive Reserve",
-    type: "Concentrated Perfume",
-    price: 1500,
-    currency: "AED",
-    image: "/lovable-uploads/e0bc621b-a964-4e70-9b24-c74ab6810dae.png",
-    description: "The mystique of the Arabian night captured with notes of midnight jasmine, frankincense, and Cambodian oud."
-  },
-  {
-    id: "sultans-legacy",
-    name: "Sultan's Legacy",
-    subtitle: "Private Collection",
-    type: "Luxury Perfume",
-    price: 2200,
-    currency: "AED",
-    image: "/lovable-uploads/423a1394-6e8b-4d7a-b064-cd8cd512bb8d.png",
-    description: "A majestic blend of the finest aged agarwood, Bulgarian rose, and sandalwood for those who lead."
-  }
-];
-
-// Update oud products with uploaded images
-const sampleOudProducts = [
-  {
-    id: "indian-salla",
-    name: "Indian Agarwood (Salla)",
-    subtitle: "Premium Grade",
-    type: "Oud Chips",
-    price: 600,
-    pricePerGram: true,
-    currency: "AED",
-    image: "/lovable-uploads/af52e074-28e0-4c42-815b-a0498fedbf0e.png",
-    description: "From the misty forests of Northeast India, known for its sweet, deep, and balsamic notes with subtle hints of fruit."
-  },
-  {
-    id: "baby-salla",
-    name: "Baby Salla",
-    subtitle: "Delicate Variant",
-    type: "Oud Chips",
-    price: 450,
-    pricePerGram: true,
-    currency: "AED",
-    image: "/lovable-uploads/6414b32e-f68e-4fd6-8f48-e04c77e210ee.png",
-    description: "A more delicate variant of Salla offering a lighter but equally complex aroma, sustainably harvested."
-  },
-  {
-    id: "mouri-agarwood",
-    name: "Mouri Agarwood",
-    subtitle: "Distinctive Character",
-    type: "Oud Chips",
-    price: 700,
-    pricePerGram: true,
-    currency: "AED",
-    image: "/lovable-uploads/f3fe8f44-cb5b-48e3-bfae-8f1a1353cda4.png",
-    description: "Presents a distinctive character with rich earthy undertones and a subtle sweetness that evolves over time."
-  },
-  {
-    id: "joura-agarwood",
-    name: "Joura Agarwood",
-    subtitle: "Rare Collection",
+    id: "joura-triple",
+    name: "Joura Triple",
+    arabicName: "جورا تريبل",
+    subtitle: "Premium Collection",
     type: "Oud Chips",
     price: 900,
     pricePerGram: true,
     currency: "AED",
     image: "/lovable-uploads/595eafb4-7374-49a2-929c-240c983567af.png",
-    description: "The rarest of our Indian varieties, offering complex notes of spice, honeyed fruits, and a distinctive vanillic sweetness."
+    description: "Our rarest triple-distilled Joura Agarwood, offering complex notes of spice, honeyed fruits, and a distinctive vanillic sweetness.",
+    suitableFor: ["Collectors", "Special Occasions"]
+  },
+  {
+    id: "saifi-triple",
+    name: "Saifi Triple",
+    arabicName: "سيفي تريبل",
+    subtitle: "Exclusive Reserve",
+    type: "Oud Chips",
+    price: 850,
+    pricePerGram: true,
+    currency: "AED",
+    image: "/lovable-uploads/af52e074-28e0-4c42-815b-a0498fedbf0e.png",
+    description: "Triple-distilled Saifi Agarwood with a complex profile of sweet florals, deep woods, and subtle spice notes.",
+    suitableFor: ["Daily Luxury", "Gifting"]
+  },
+  {
+    id: "bal-moori",
+    name: "Bal Moori",
+    arabicName: "بال موري",
+    subtitle: "Heritage Collection",
+    type: "Oud Chips",
+    price: 700,
+    pricePerGram: true,
+    currency: "AED",
+    image: "/lovable-uploads/f3fe8f44-cb5b-48e3-bfae-8f1a1353cda4.png",
+    description: "A balanced Moori Agarwood offering sweet, woody notes with exceptional staying power and complex development.",
+    suitableFor: ["Daily Use", "New Collectors"]
+  },
+  {
+    id: "moori-triple",
+    name: "Moori Triple",
+    arabicName: "موري تريبل",
+    subtitle: "Premium Selection",
+    type: "Oud Chips",
+    price: 750,
+    pricePerGram: true,
+    currency: "AED",
+    image: "/lovable-uploads/595eafb4-7374-49a2-929c-240c983567af.png",
+    description: "Triple-distilled Moori Agarwood offering an intensified, complex aroma with remarkable depth and character.",
+    suitableFor: ["Connoisseurs", "Special Occasions"]
+  },
+  {
+    id: "barri",
+    name: "Barri",
+    arabicName: "بري",
+    subtitle: "Classic Collection",
+    type: "Oud Chips",
+    price: 600,
+    pricePerGram: true,
+    currency: "AED",
+    image: "/lovable-uploads/6414b32e-f68e-4fd6-8f48-e04c77e210ee.png",
+    description: "Wild-harvested Barri Agarwood with distinctive earthy character and natural complexity.",
+    suitableFor: ["Nature Enthusiasts", "Daily Use"]
+  },
+  {
+    id: "double-face",
+    name: "Double Face",
+    arabicName: "دبل فيس",
+    subtitle: "Artisan Collection",
+    type: "Oud Chips",
+    price: 800,
+    pricePerGram: true,
+    currency: "AED",
+    image: "/lovable-uploads/af52e074-28e0-4c42-815b-a0498fedbf0e.png",
+    description: "Uniquely dual-character oud that transforms remarkably from initial burn to settled aroma.",
+    suitableFor: ["Collectors", "Experience Seekers"]
+  },
+  {
+    id: "malaki",
+    name: "Malaki",
+    arabicName: "ملكي",
+    subtitle: "Royal Collection",
+    type: "Oud Chips",
+    price: 950,
+    pricePerGram: true,
+    currency: "AED",
+    image: "/lovable-uploads/595eafb4-7374-49a2-929c-240c983567af.png",
+    description: "Our royal grade agarwood with majestic character, deep complexity, and noble presence.",
+    suitableFor: ["VIP Gifting", "Royal Occasions"]
+  },
+  {
+    id: "joura-super",
+    name: "Joura Super",
+    arabicName: "جورا سوبر",
+    subtitle: "Ultra Premium",
+    type: "Oud Chips",
+    price: 1200,
+    pricePerGram: true,
+    currency: "AED",
+    image: "/lovable-uploads/538e6910-0ab6-4c27-96c9-3839ea9c4dd0.png",
+    description: "The ultimate expression of Joura Agarwood, offering unparalleled complexity, rarity, and prestige.",
+    suitableFor: ["Elite Collectors", "Museum-Grade Collections"]
   }
 ];
 
@@ -103,25 +120,53 @@ const testimonials = [
     id: "t1",
     name: "MXXXXX A. XXX",
     title: "Oud Collector",
-    quote: "The Baby Salla from FARAN has a complexity that I've rarely experienced. Its delicate notes unfold over time, revealing new dimensions."
+    quote: "The Joura Triple from FARAN has a complexity that I've rarely experienced. Its delicate notes unfold over time, revealing new dimensions."
   },
   {
     id: "t2",
     name: "SXXXXX XXX MXXXXX",
     title: "Fragrance Connoisseur",
-    quote: "The authenticity of FARAN's Indian Agarwood is beyond compare. I appreciate the transparency in sourcing and the commitment to quality."
+    quote: "The authenticity of FARAN's Malaki is beyond compare. I appreciate the transparency in sourcing and the commitment to quality."
   },
   {
     id: "t3",
     name: "AXXXXX XXX RXXXXX",
     title: "Oud Enthusiast",
-    quote: "Joura Agarwood from FARAN has become the centerpiece of my collection. Its rich profile is truly a testament to their expertise."
+    quote: "Joura Super from FARAN has become the centerpiece of my collection. Its rich profile is truly a testament to their expertise."
+  }
+];
+
+// Categories for "Shop by Profile" section
+const shopByProfile = [
+  { 
+    id: "gifting", 
+    name: "Gifting", 
+    arabicName: "الهدايا",
+    products: ["malaki", "joura-triple", "saifi-triple"]
+  },
+  {
+    id: "daily",
+    name: "Daily Wear",
+    arabicName: "الاستخدام اليومي",
+    products: ["barri", "bal-moori"]
+  },
+  {
+    id: "signature",
+    name: "Signature Scent",
+    arabicName: "العطر المميز",
+    products: ["joura-super", "malaki", "moori-triple"]
+  },
+  {
+    id: "collectors",
+    name: "Collectors",
+    arabicName: "المجموعات",
+    products: ["joura-super", "double-face", "joura-triple"]
   }
 ];
 
 const ProductGrid = () => {
   const { isRTL } = useLanguage();
-  const [activeFilter, setActiveFilter] = useState("all");
+  const [activeTab, setActiveTab] = useState("all");
   
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -133,112 +178,128 @@ const ProductGrid = () => {
     }
   };
 
+  // Function to get products by profile category
+  const getProductsByProfile = (profileId: string) => {
+    const category = shopByProfile.find(cat => cat.id === profileId);
+    if (!category) return [];
+    
+    return category.products.map(productId => 
+      oudProducts.find(product => product.id === productId)
+    ).filter(Boolean);
+  };
+
   return (
     <section className="py-24 bg-faran-black">
       <div className="container-custom">
-        {/* Category filters */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          <button 
-            onClick={() => setActiveFilter("all")}
-            className={`px-6 py-2 rounded-sm transition-all ${activeFilter === "all" 
-              ? "bg-faran-gold text-faran-black" 
-              : "border border-faran-gold/30 text-gray-300 hover:border-faran-gold hover:text-white"}`}
-          >
-            {isRTL ? "كل المنتجات" : "All Products"}
-          </button>
-          <button 
-            onClick={() => setActiveFilter("oud")}
-            className={`px-6 py-2 rounded-sm transition-all ${activeFilter === "oud" 
-              ? "bg-faran-gold text-faran-black" 
-              : "border border-faran-gold/30 text-gray-300 hover:border-faran-gold hover:text-white"}`}
-          >
-            {isRTL ? "قطع العود" : "Oud Chips"}
-          </button>
-          <button 
-            onClick={() => setActiveFilter("perfume")}
-            className={`px-6 py-2 rounded-sm transition-all ${activeFilter === "perfume" 
-              ? "bg-faran-gold text-faran-black" 
-              : "border border-faran-gold/30 text-gray-300 hover:border-faran-gold hover:text-white"}`}
-          >
-            {isRTL ? "زيوت العطور" : "Perfume Oils"}
-          </button>
+        <div className="text-center mb-16">
+          <h1 className="text-3xl md:text-5xl font-serif mb-4">
+            {isRTL ? "مجموعة فاران" : "The FARAN Collection"}
+          </h1>
+          <div className="w-20 h-[1px] bg-faran-gold mx-auto mb-6"></div>
+          <p className="text-gray-300 max-w-2xl mx-auto">
+            {isRTL 
+              ? "اكتشف مجموعتنا الحصرية من أرقى أنواع العود والعطور الفاخرة. كل قطعة تروي قصة إرث وحرفية وجودة لا مثيل لها."
+              : "Discover our exclusive collection of premium oud and luxury fragrances. Each piece tells a story of heritage, craftsmanship, and uncompromising quality."}
+          </p>
         </div>
         
-        {/* Oud Chips Section */}
-        {(activeFilter === "all" || activeFilter === "oud") && (
-          <div id="oud-chips" className="mb-20 scroll-mt-24">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-serif mb-4">
-                {isRTL ? "قطع العود الفاخرة" : "Premium Oud Chips"}
-              </h2>
-              <div className="w-20 h-[1px] bg-faran-gold mx-auto mb-6"></div>
-              <p className="text-gray-300 max-w-2xl mx-auto">
-                {isRTL 
-                  ? "استكشف مجموعتنا الاستثنائية من قطع العود الأصلية، التي تم تجميعها بعناية من أقدم الغابات وأكثرها تقديراً."
-                  : "Explore our exceptional collection of authentic oud chips, carefully curated from the oldest and most revered forests."}
-              </p>
+        {/* Modern Tabs Interface */}
+        <div className="mb-16">
+          <Tabs defaultValue="all" className="w-full" onValueChange={setActiveTab}>
+            <div className="flex justify-center mb-8">
+              <TabsList className="bg-faran-black/80 border border-faran-gold/30">
+                <TabsTrigger value="all" className="data-[state=active]:bg-faran-gold data-[state=active]:text-faran-black">
+                  {isRTL ? "كل المنتجات" : "All Products"}
+                </TabsTrigger>
+                <TabsTrigger value="profile" className="data-[state=active]:bg-faran-gold data-[state=active]:text-faran-black">
+                  {isRTL ? "تسوق حسب الاستخدام" : "Shop by Profile"}
+                </TabsTrigger>
+                <TabsTrigger value="bestsellers" className="data-[state=active]:bg-faran-gold data-[state=active]:text-faran-black">
+                  {isRTL ? "الأكثر مبيعاً" : "Bestsellers"}
+                </TabsTrigger>
+              </TabsList>
             </div>
-            
-            <motion.div 
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-            >
-              {sampleOudProducts.map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-            </motion.div>
-            
-            <div className="text-center mt-12">
-              <Link to="/shop/oud-chips" className="btn-luxury-outline px-8 py-3">
-                {isRTL ? "عرض المزيد من قطع العود" : "View All Oud Chips"}
-              </Link>
-            </div>
-          </div>
-        )}
-        
-        {/* Perfume Oils Section */}
-        {(activeFilter === "all" || activeFilter === "perfume") && (
-          <div id="perfume-oils" className="scroll-mt-24">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-serif mb-4">
-                {isRTL ? "عطور فاران الفاخرة" : "FARAN Luxury Perfumes"}
-              </h2>
-              <div className="w-20 h-[1px] bg-faran-gold mx-auto mb-6"></div>
-              <p className="text-gray-300 max-w-2xl mx-auto">
-                {isRTL 
-                  ? "عطور مصممة بدقة من أجود أنواع العود، تحمل توقيع سيدنا وإرثنا العريق في صناعة العطور."
-                  : "Meticulously crafted fragrances from the finest oud, bearing the signature of our mastery and rich perfumery heritage."}
-              </p>
-            </div>
-            
-            <motion.div 
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-            >
-              {sampleProducts.map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-            </motion.div>
-            
-            <div className="text-center mt-12">
-              <Link to="/shop/perfumes" className="btn-luxury-outline px-8 py-3">
-                {isRTL ? "عرض المزيد من العطور" : "View All Perfumes"}
-              </Link>
-            </div>
-          </div>
-        )}
+
+            {/* All Products */}
+            <TabsContent value="all" className="mt-0">
+              <motion.div 
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+              >
+                {oudProducts.map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+              </motion.div>
+            </TabsContent>
+
+            {/* Shop by Profile */}
+            <TabsContent value="profile" className="mt-0">
+              <div className="mb-8">
+                <Tabs defaultValue="gifting" className="w-full">
+                  <div className="flex justify-center mb-8 overflow-x-auto py-2">
+                    <TabsList className="bg-faran-black/80 border border-faran-gold/30">
+                      {shopByProfile.map(profile => (
+                        <TabsTrigger 
+                          key={profile.id} 
+                          value={profile.id}
+                          className="data-[state=active]:bg-faran-gold data-[state=active]:text-faran-black"
+                        >
+                          {isRTL ? profile.arabicName : profile.name}
+                        </TabsTrigger>
+                      ))}
+                    </TabsList>
+                  </div>
+
+                  {shopByProfile.map(profile => (
+                    <TabsContent key={profile.id} value={profile.id} className="mt-0">
+                      <h3 className="text-xl font-serif mb-6 text-center">
+                        {isRTL ? `أفضل المنتجات لـ ${profile.arabicName}` : `Perfect for ${profile.name}`}
+                      </h3>
+                      <motion.div 
+                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                        variants={containerVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-50px" }}
+                      >
+                        {getProductsByProfile(profile.id).map((product: any) => (
+                          <ProductCard key={product.id} product={product} />
+                        ))}
+                      </motion.div>
+                    </TabsContent>
+                  ))}
+                </Tabs>
+              </div>
+            </TabsContent>
+
+            {/* Bestsellers */}
+            <TabsContent value="bestsellers" className="mt-0">
+              <motion.div 
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+              >
+                {oudProducts
+                  .filter(p => ["joura-super", "malaki", "joura-triple"].includes(p.id))
+                  .map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                  ))
+                }
+              </motion.div>
+            </TabsContent>
+          </Tabs>
+        </div>
         
         {/* Customer Testimonials Section */}
         <div className="mt-32">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-serif mb-4">
-              {isRTL ? "شهادات العملاء" : "Customer Testimonials"}
+              {isRTL ? "آراء العملاء" : "Client Testimonials"}
             </h2>
             <div className="w-20 h-[1px] bg-faran-gold mx-auto mb-6"></div>
           </div>

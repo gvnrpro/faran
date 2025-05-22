@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { motion } from "framer-motion";
@@ -6,6 +7,7 @@ import { Link } from "react-router-dom";
 interface Product {
   id: string;
   name: string;
+  arabicName?: string;
   subtitle: string;
   type: string;
   price: number;
@@ -13,6 +15,7 @@ interface Product {
   currency: string;
   image: string;
   description: string;
+  suitableFor?: string[];
 }
 
 interface ProductCardProps {
@@ -60,9 +63,14 @@ const ProductCard = ({ product }: ProductCardProps) => {
                 <div className="opacity-80 text-faran-gold text-xs mb-1">
                   {product.subtitle}
                 </div>
-                <h3 className="text-lg font-serif mb-2 group-hover:text-faran-gold transition-colors">
-                  {product.name}
+                <h3 className="text-lg font-serif mb-1 group-hover:text-faran-gold transition-colors">
+                  {isRTL && product.arabicName ? product.arabicName : product.name}
                 </h3>
+                {isRTL && product.arabicName ? (
+                  <div className="text-xs text-white/60 mb-2">{product.name}</div>
+                ) : product.arabicName ? (
+                  <div className="text-xs text-white/60 mb-2">{product.arabicName}</div>
+                ) : null}
                 <div className="flex items-baseline justify-between">
                   <p className="text-sm text-white/80">
                     {product.pricePerGram ? (

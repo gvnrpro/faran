@@ -22,7 +22,7 @@ const ShopHero = () => {
   }, []);
 
   return (
-    <section className="relative h-[60vh] min-h-[500px] w-full overflow-hidden flex items-center justify-center">
+    <section className="relative h-[70vh] min-h-[500px] w-full overflow-hidden flex items-center justify-center">
       {/* Background image with transition */}
       {heroImages.map((image, index) => (
         <div 
@@ -31,7 +31,7 @@ const ShopHero = () => {
           style={{ 
             backgroundImage: `url('${image}')`,
             opacity: index === activeImage ? 1 : 0,
-            filter: "brightness(0.4)",
+            filter: "brightness(0.5)",
             transitionDuration: "1.5s"
           }}
         ></div>
@@ -49,29 +49,29 @@ const ShopHero = () => {
           className="max-w-3xl mx-auto"
         >
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif mb-6 text-white">
-            {isRTL ? "مجموعة فاران" : "The FARAN Collection"}
+            {isRTL ? "عطور فاران الحصرية" : "FARAN Exclusive Collection"}
           </h1>
           
           <p className="text-lg md:text-xl font-light mb-8 text-gray-200 max-w-2xl mx-auto">
             {isRTL 
-              ? "اكتشف مجموعتنا الحصرية من أرقى أنواع العود والعطور الفاخرة. كل قطعة تروي قصة إرث وحرفية وجودة لا مثيل لها."
-              : "Discover our exclusive collection of premium oud and luxury fragrances. Each piece tells a story of heritage, craftsmanship, and uncompromising quality."}
+              ? "اكتشف مجموعتنا الحصرية من أرقى أنواع العود والعطور الفاخرة. عبق الأجداد، يُرتدى بفخر ويُورث بعناية."
+              : "The scent of ancestry. Passed from palm to palm, tent to palace—FARAN is not merely worn; it is inherited."}
           </p>
           
           <div className="w-20 h-[1px] bg-faran-gold mx-auto mb-8"></div>
           
           <div className="flex flex-wrap gap-4 justify-center">
             <a 
-              href="#oud-chips" 
+              href="#bestsellers" 
               className="btn-luxury-outline px-8 py-3"
             >
-              {isRTL ? "قطع العود" : "Oud Chips"}
+              {isRTL ? "الأكثر مبيعاً" : "Bestsellers"}
             </a>
             <a 
-              href="#perfume-oils" 
-              className="btn-luxury-outline px-8 py-3"
+              href="#profile" 
+              className="btn-luxury px-8 py-3"
             >
-              {isRTL ? "زيوت العطور" : "Perfume Oils"}
+              {isRTL ? "تسوق حسب الاستخدام" : "Shop by Profile"}
             </a>
           </div>
         </motion.div>
