@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import ProductCard from "./ProductCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { MessageCircle } from "lucide-react";
 
 // Product data for the 8 requested products
 const oudProducts = [
@@ -165,7 +166,7 @@ const shopByProfile = [
 ];
 
 const ProductGrid = () => {
-  const { isRTL } = useLanguage();
+  const { isRTL, language } = useLanguage();
   const [activeTab, setActiveTab] = useState("all");
   
   const containerVariants = {
@@ -188,15 +189,38 @@ const ProductGrid = () => {
     ).filter(Boolean);
   };
 
+  // Why FARAN section content
+  const whyFaranReasons = [
+    {
+      title: isRTL ? "جودة استثنائية" : "Exceptional Quality",
+      description: isRTL 
+        ? "نستخدم فقط أفضل أنواع العود، مع عملية اختيار صارمة لضمان تقديم أرقى المنتجات."
+        : "We use only the finest oud, with a rigorous selection process to ensure the most refined products."
+    },
+    {
+      title: isRTL ? "حرفية تقليدية" : "Traditional Craftsmanship",
+      description: isRTL 
+        ? "نجمع بين الأساليب التقليدية الموروثة والتقنيات الحديثة لإنشاء عطور فريدة من نوعها."
+        : "We combine inherited traditional methods with modern techniques to create truly unique fragrances."
+    },
+    {
+      title: isRTL ? "إرث متجذر" : "Deep Heritage",
+      description: isRTL 
+        ? "كل منتج يحمل قصة إرث عريق متجذر في تقاليد صناعة العطور العربية الأصيلة."
+        : "Each product carries a story of rich heritage rooted in authentic Arabian perfumery traditions."
+    }
+  ];
+
   return (
-    <section className="py-24 bg-faran-black">
+    <section className="py-16 bg-faran-cream">
       <div className="container-custom">
+        {/* Section 1: Product Grid */}
         <div className="text-center mb-16">
-          <h1 className="text-3xl md:text-5xl font-serif mb-4">
+          <h2 className="text-3xl md:text-4xl font-serif mb-4 text-faran-brown">
             {isRTL ? "مجموعة فاران" : "The FARAN Collection"}
-          </h1>
+          </h2>
           <div className="w-20 h-[1px] bg-faran-gold mx-auto mb-6"></div>
-          <p className="text-gray-300 max-w-2xl mx-auto">
+          <p className="text-faran-brown/80 max-w-2xl mx-auto">
             {isRTL 
               ? "اكتشف مجموعتنا الحصرية من أرقى أنواع العود والعطور الفاخرة. كل قطعة تروي قصة إرث وحرفية وجودة لا مثيل لها."
               : "Discover our exclusive collection of premium oud and luxury fragrances. Each piece tells a story of heritage, craftsmanship, and uncompromising quality."}
@@ -204,17 +228,17 @@ const ProductGrid = () => {
         </div>
         
         {/* Modern Tabs Interface */}
-        <div className="mb-16">
+        <div className="mb-16" id="bestsellers">
           <Tabs defaultValue="all" className="w-full" onValueChange={setActiveTab}>
             <div className="flex justify-center mb-8">
-              <TabsList className="bg-faran-black/80 border border-faran-gold/30">
-                <TabsTrigger value="all" className="data-[state=active]:bg-faran-gold data-[state=active]:text-faran-black">
+              <TabsList className="bg-white border border-faran-gold/30">
+                <TabsTrigger value="all" className="data-[state=active]:bg-faran-gold data-[state=active]:text-white">
                   {isRTL ? "كل المنتجات" : "All Products"}
                 </TabsTrigger>
-                <TabsTrigger value="profile" className="data-[state=active]:bg-faran-gold data-[state=active]:text-faran-black">
+                <TabsTrigger value="profile" className="data-[state=active]:bg-faran-gold data-[state=active]:text-white" id="profile">
                   {isRTL ? "تسوق حسب الاستخدام" : "Shop by Profile"}
                 </TabsTrigger>
-                <TabsTrigger value="bestsellers" className="data-[state=active]:bg-faran-gold data-[state=active]:text-faran-black">
+                <TabsTrigger value="bestsellers" className="data-[state=active]:bg-faran-gold data-[state=active]:text-white">
                   {isRTL ? "الأكثر مبيعاً" : "Bestsellers"}
                 </TabsTrigger>
               </TabsList>
@@ -240,12 +264,12 @@ const ProductGrid = () => {
               <div className="mb-8">
                 <Tabs defaultValue="gifting" className="w-full">
                   <div className="flex justify-center mb-8 overflow-x-auto py-2">
-                    <TabsList className="bg-faran-black/80 border border-faran-gold/30">
+                    <TabsList className="bg-white border border-faran-gold/30">
                       {shopByProfile.map(profile => (
                         <TabsTrigger 
                           key={profile.id} 
                           value={profile.id}
-                          className="data-[state=active]:bg-faran-gold data-[state=active]:text-faran-black"
+                          className="data-[state=active]:bg-faran-gold data-[state=active]:text-white"
                         >
                           {isRTL ? profile.arabicName : profile.name}
                         </TabsTrigger>
@@ -255,7 +279,7 @@ const ProductGrid = () => {
 
                   {shopByProfile.map(profile => (
                     <TabsContent key={profile.id} value={profile.id} className="mt-0">
-                      <h3 className="text-xl font-serif mb-6 text-center">
+                      <h3 className="text-xl font-serif mb-6 text-center text-faran-brown">
                         {isRTL ? `أفضل المنتجات لـ ${profile.arabicName}` : `Perfect for ${profile.name}`}
                       </h3>
                       <motion.div 
@@ -295,10 +319,51 @@ const ProductGrid = () => {
           </Tabs>
         </div>
         
-        {/* Customer Testimonials Section */}
+        {/* Section 2: Why FARAN? */}
+        <div className="mt-32 mb-32 bg-faran-beige p-12 rounded-sm">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-serif mb-4 text-faran-brown">
+              {isRTL ? "لماذا فاران؟" : "Why FARAN?"}
+            </h2>
+            <div className="w-20 h-[1px] bg-faran-gold mx-auto mb-6"></div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {whyFaranReasons.map((reason, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2 }}
+                className="bg-white p-8 rounded-sm shadow-sm"
+              >
+                <div className="w-12 h-12 rounded-full bg-faran-softGold flex items-center justify-center mb-4 mx-auto">
+                  <span className="text-faran-gold text-xl font-serif">{index + 1}</span>
+                </div>
+                <h3 className="text-xl font-serif text-center mb-3 text-faran-brown">{reason.title}</h3>
+                <p className="text-center text-faran-brown/80">{reason.description}</p>
+              </motion.div>
+            ))}
+          </div>
+          
+          <div className="text-center mt-10">
+            <a 
+              href={`https://wa.me/971557993441?text=${encodeURIComponent("Hello FARAN, I'd like to learn more about your products.")}`} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="btn-luxury inline-flex items-center gap-2"
+            >
+              <MessageCircle size={18} />
+              {isRTL ? "تواصل معنا" : "Contact Us"}
+            </a>
+          </div>
+        </div>
+        
+        {/* Section 3: Customer Testimonials */}
         <div className="mt-32">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-serif mb-4">
+            <h2 className="text-3xl md:text-4xl font-serif mb-4 text-faran-brown">
               {isRTL ? "آراء العملاء" : "Client Testimonials"}
             </h2>
             <div className="w-20 h-[1px] bg-faran-gold mx-auto mb-6"></div>
@@ -308,20 +373,20 @@ const ProductGrid = () => {
             {testimonials.map((item) => (
               <motion.div 
                 key={item.id}
-                className="bg-faran-black/50 border border-faran-gold/20 p-6 rounded-sm"
+                className="bg-white border border-faran-gold/10 p-6 rounded-sm shadow-sm"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
               >
-                <blockquote className="text-gray-300 italic mb-4">"{item.quote}"</blockquote>
+                <blockquote className="text-faran-brown/80 italic mb-4">"{item.quote}"</blockquote>
                 <div className="flex items-center">
-                  <div className="w-8 h-8 rounded-full bg-faran-gold/30 flex items-center justify-center text-faran-gold">
+                  <div className="w-8 h-8 rounded-full bg-faran-softGold flex items-center justify-center text-faran-gold">
                     {item.name.charAt(0)}
                   </div>
                   <div className="ml-3">
                     <p className="text-faran-gold font-medium">{item.name}</p>
-                    <p className="text-sm text-gray-400">{item.title}</p>
+                    <p className="text-sm text-faran-brown/60">{item.title}</p>
                   </div>
                 </div>
               </motion.div>

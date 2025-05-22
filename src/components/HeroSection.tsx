@@ -1,152 +1,166 @@
 
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { MessageCircle, ChevronDown } from "lucide-react";
 
 const HeroSection = () => {
-  const { t, isRTL } = useLanguage();
-  const sectionRef = useRef<HTMLElement>(null);
+  const { t, isRTL, language } = useLanguage();
+  const [activeSlide, setActiveSlide] = useState(0);
   
+  const heroSlides = [
+    {
+      id: "joura-super",
+      name: "Joura Super",
+      arabicName: "جورا سوبر",
+      subtitle: "Ultra Premium",
+      image: "/lovable-uploads/538e6910-0ab6-4c27-96c9-3839ea9c4dd0.png",
+      description: "The pinnacle of oud excellence, offering unparalleled complexity and character."
+    },
+    {
+      id: "malaki",
+      name: "Malaki",
+      arabicName: "ملكي",
+      subtitle: "Royal Collection",
+      image: "/lovable-uploads/595eafb4-7374-49a2-929c-240c983567af.png",
+      description: "A majestic fragrance with deep complexity and noble presence."
+    },
+    {
+      id: "joura-triple",
+      name: "Joura Triple",
+      arabicName: "جورا تريبل",
+      subtitle: "Premium Collection",
+      image: "/lovable-uploads/6414b32e-f68e-4fd6-8f48-e04c77e210ee.png",
+      description: "Triple-distilled for complexity, offering notes of spice and honeyed fruits."
+    }
+  ];
+
+  // Auto-rotate carousel
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!sectionRef.current) return;
-      
-      const { clientX, clientY } = e;
-      const { width, height, left, top } = sectionRef.current.getBoundingClientRect();
-      
-      const x = (clientX - left) / width;
-      const y = (clientY - top) / height;
-      
-      const moveX = 30 * (0.5 - x);
-      const moveY = 30 * (0.5 - y);
-      
-      const bg = sectionRef.current.querySelector('.parallax-bg') as HTMLElement;
-      if (bg) {
-        bg.style.transform = `translate3d(${moveX}px, ${moveY}px, 0) scale(1.1)`;
-      }
-    };
+    const interval = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 5000);
     
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-  
+    return () => clearInterval(interval);
+  }, [heroSlides.length]);
+
   return (
     <section 
-      id="home" 
-      ref={sectionRef}
-      className={`relative h-screen w-full flex items-center justify-center overflow-hidden ${isRTL ? 'rtl' : 'ltr'}`}
+      className="relative pt-32 pb-20 md:min-h-screen flex items-center bg-faran-cream overflow-hidden"
+      style={{
+        backgroundImage: "radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.08) 0%, transparent 70%)"
+      }}
     >
-      {/* Background with parallax effect */}
-      <div 
-        className="parallax-bg absolute inset-0 bg-cover bg-center z-0 transition-transform duration-300 ease-out"
-        style={{
-          backgroundImage: "url('/lovable-uploads/fe69bde4-6095-4387-ae74-d59c91e87a43.png')",
-          transform: "scale(1.1)",
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-faran-black/90 via-faran-black/70 to-faran-black/90"></div>
+      {/* Background pattern */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <div className="absolute top-0 left-0 w-1/3 h-px bg-gradient-to-r from-transparent via-faran-gold to-transparent"></div>
+        <div className="absolute bottom-0 right-0 w-1/3 h-px bg-gradient-to-l from-transparent via-faran-gold to-transparent"></div>
       </div>
-      
-      {/* Golden line design elements */}
-      <div className="absolute top-[15%] left-0 w-1/3 h-px bg-gradient-to-r from-transparent via-faran-gold/80 to-transparent"></div>
-      <div className="absolute bottom-[15%] right-0 w-1/3 h-px bg-gradient-to-l from-transparent via-faran-gold/80 to-transparent"></div>
-      <div className="absolute top-1/4 right-20 h-32 w-px bg-gradient-to-b from-transparent via-faran-gold/50 to-transparent hidden md:block"></div>
-      <div className="absolute bottom-1/4 left-20 h-32 w-px bg-gradient-to-t from-transparent via-faran-gold/50 to-transparent hidden md:block"></div>
-      
-      {/* Content */}
-      <motion.div 
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
-        className="container-custom relative z-10 text-center mx-auto px-4"
-      >
-        <div>
+
+      <div className="container-custom relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left content */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="mb-6"
+            className="text-center lg:text-left"
           >
-            <img 
-              src="/lovable-uploads/a206e9b1-f855-4dae-bf84-b9e4a1e92871.png" 
-              alt="FARAN" 
-              className="h-24 md:h-28 mx-auto"
-            />
+            <h1 className="font-serif mb-6">
+              <span className="text-faran-gold block text-xl md:text-2xl mb-2">FARAN</span>
+              <span className="block text-4xl md:text-5xl lg:text-6xl text-faran-brown">
+                {isRTL ? "عطور استثنائية" : "Exceptional Fragrances"}
+              </span>
+              <span className="block text-xl md:text-2xl mt-3 text-faran-brown/80 font-light">
+                {isRTL ? "إرث في العطور" : "A Legacy in Fragrance"}
+              </span>
+            </h1>
+            
+            <div className="w-24 h-px mx-auto lg:mx-0 bg-faran-gold/70 mb-8"></div>
+            
+            <p className="text-faran-brown/80 max-w-xl mx-auto lg:mx-0 mb-10">
+              {isRTL 
+                ? "ليست مجرد عطور، بل إرث من الأناقة والتميز. تجسد فاران روح الفخامة في عالم العطور، بتركيبات فريدة من أجود أنواع العود."
+                : "More than fragrance—it's inherited elegance. FARAN embodies luxury in olfactory form, with unique compositions crafted from the finest oud."}
+            </p>
+            
+            <div className={`flex flex-col sm:flex-row justify-center lg:justify-start gap-5 sm:gap-8 ${isRTL ? 'sm:flex-row-reverse' : ''}`}>
+              <Link to={`/${language}/shop`} className="btn-luxury">
+                {isRTL ? "اكتشف المجموعة" : "Explore Collection"}
+              </Link>
+              <a 
+                href="https://wa.me/971557993441" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn-luxury-outline flex items-center justify-center gap-2"
+              >
+                <MessageCircle size={18} />
+                {isRTL ? "تواصل معنا" : "Contact Us"}
+              </a>
+            </div>
           </motion.div>
           
-          <motion.h1 
-            className="text-white mb-8 font-serif"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
-          >
-            <span className="block text-2xl md:text-3xl font-light tracking-wider mt-2 text-white/90">FARAN: The Scent Inherited.</span>
-            <span className="block text-xl md:text-2xl font-light tracking-wide mt-3 text-faran-gold">A Legacy in Fragrance</span>
-          </motion.h1>
-          
-          <motion.div 
-            className="w-24 h-px mx-auto bg-faran-gold/70 mb-8"
-            initial={{ width: 0 }}
-            animate={{ width: 96 }}
-            transition={{ duration: 1.5, delay: 0.5 }}
-          ></motion.div>
-          
-          <motion.p 
-            className="text-white/80 max-w-2xl mx-auto mb-12 text-lg font-light leading-relaxed"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.7 }}
-          >
-            FARAN is a house of memory. Of mastery. Born from the desert winds and ancient trade routes, FARAN distills rare Agarwood into olfactory heritage. This is not fragrance for the many. This is for those who understand. Those who recognize the honor of scent.
-          </motion.p>
-          
-          <motion.div 
-            className={`flex flex-col sm:flex-row justify-center gap-5 sm:gap-8 ${isRTL ? 'sm:flex-row-reverse' : ''}`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
-          >
-            <a href="#collection" className="btn-luxury">
-              Shop The Collection
-            </a>
-            <a href="#about" className="btn-luxury-outline">
-              Learn More About FARAN
-            </a>
-          </motion.div>
+          {/* Right carousel */}
+          <div className="relative h-[500px] flex items-center justify-center">
+            {heroSlides.map((slide, index) => (
+              <motion.div
+                key={slide.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ 
+                  opacity: activeSlide === index ? 1 : 0,
+                  scale: activeSlide === index ? 1 : 0.9,
+                  zIndex: activeSlide === index ? 10 : 0
+                }}
+                transition={{ duration: 0.8 }}
+                className="absolute inset-0 flex flex-col items-center"
+              >
+                <div className="relative w-full max-w-[300px] aspect-[3/4]">
+                  <div className="absolute top-0 left-0 w-full h-full bg-gradient-radial from-faran-softGold/30 to-transparent rounded-full blur-2xl -z-10 opacity-70"></div>
+                  <img 
+                    src={slide.image} 
+                    alt={slide.name}
+                    className="object-contain h-full w-full"
+                  />
+                </div>
+                
+                <div className="text-center mt-8">
+                  <div className="text-faran-gold text-sm">{slide.subtitle}</div>
+                  <h3 className="text-2xl font-serif mt-1 text-faran-brown">
+                    {isRTL ? slide.arabicName : slide.name}
+                  </h3>
+                  <p className="text-faran-brown/70 max-w-xs mx-auto mt-2">{slide.description}</p>
+                  <Link 
+                    to={`/${language}/product/${slide.id}`}
+                    className="inline-block mt-4 text-faran-gold hover:text-faran-darkGold border-b border-faran-gold/30 hover:border-faran-gold transition-colors"
+                  >
+                    {isRTL ? "اكتشف المزيد" : "Discover More"}
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
+            
+            {/* Carousel indicators */}
+            <div className="absolute bottom-0 left-0 right-0 flex justify-center gap-2">
+              {heroSlides.map((_, index) => (
+                <button
+                  key={index}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    activeSlide === index ? 'bg-faran-gold w-6' : 'bg-faran-gold/30'
+                  }`}
+                  onClick={() => setActiveSlide(index)}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
         </div>
-      </motion.div>
-      
-      {/* Floating product image */}
-      <motion.div 
-        className="absolute bottom-20 sm:bottom-40 right-5 sm:right-20 w-40 sm:w-60 md:w-80 opacity-95 hidden md:block"
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1.2, delay: 0.8 }}
-      >
-        <img 
-          src="/lovable-uploads/423a1394-6e8b-4d7a-b064-cd8cd512bb8d.png"
-          alt="FARAN Luxury Oud" 
-          className="w-full drop-shadow-2xl"
-        />
-        <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-black/60 backdrop-blur-sm rounded-full flex items-center justify-center">
-          <img 
-            src="/lovable-uploads/a206e9b1-f855-4dae-bf84-b9e4a1e92871.png" 
-            alt="FARAN Seal" 
-            className="w-10 h-10 object-contain"
-          />
+        
+        {/* Scroll indicator */}
+        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce">
+          <ChevronDown size={24} className="text-faran-gold" />
         </div>
-      </motion.div>
-      
-      {/* Scroll down indicator */}
-      <motion.div 
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.5 }}
-      >
-        <span className="text-faran-gold/80 text-sm mb-2 tracking-widest font-light">{isRTL ? 'اسحب' : 'SCROLL'}</span>
-        <div className="w-px h-12 bg-gradient-to-b from-faran-gold/80 to-transparent"></div>
-      </motion.div>
+      </div>
     </section>
   );
 };

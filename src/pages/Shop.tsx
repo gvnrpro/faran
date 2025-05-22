@@ -44,7 +44,7 @@ const Shop = () => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
-        className={`bg-faran-black text-white min-h-screen ${isRTL ? 'rtl' : 'ltr'}`}
+        className={`bg-faran-cream text-faran-brown min-h-screen ${isRTL ? 'rtl' : 'ltr'}`}
       >
         <SEO 
           title="Premium Oud Collection | FARAN"
@@ -60,24 +60,6 @@ const Shop = () => {
         <ShopHero />
         <ProductGrid />
         <Footer />
-        
-        {/* Luxury corner elements */}
-        <div className="fixed top-0 left-0 w-12 h-12 z-10 pointer-events-none">
-          <div className="absolute top-0 left-0 w-[1px] h-12 bg-gradient-to-b from-faran-gold/80 to-transparent"></div>
-          <div className="absolute top-0 left-0 h-[1px] w-12 bg-gradient-to-r from-faran-gold/80 to-transparent"></div>
-        </div>
-        <div className="fixed top-0 right-0 w-12 h-12 z-10 pointer-events-none">
-          <div className="absolute top-0 right-0 w-[1px] h-12 bg-gradient-to-b from-faran-gold/80 to-transparent"></div>
-          <div className="absolute top-0 right-0 h-[1px] w-12 bg-gradient-to-l from-faran-gold/80 to-transparent"></div>
-        </div>
-        <div className="fixed bottom-0 left-0 w-12 h-12 z-10 pointer-events-none">
-          <div className="absolute bottom-0 left-0 w-[1px] h-12 bg-gradient-to-t from-faran-gold/80 to-transparent"></div>
-          <div className="absolute bottom-0 left-0 h-[1px] w-12 bg-gradient-to-r from-faran-gold/80 to-transparent"></div>
-        </div>
-        <div className="fixed bottom-0 right-0 w-12 h-12 z-10 pointer-events-none">
-          <div className="absolute bottom-0 right-0 w-[1px] h-12 bg-gradient-to-t from-faran-gold/80 to-transparent"></div>
-          <div className="absolute bottom-0 right-0 h-[1px] w-12 bg-gradient-to-l from-faran-gold/80 to-transparent"></div>
-        </div>
       </motion.div>
     </AnimatePresence>
   );

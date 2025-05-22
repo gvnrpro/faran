@@ -53,16 +53,18 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				// FARAN custom colors
+				// FARAN custom colors - updated for light theme
 				faran: {
 					gold: '#D4AF37',
 					darkGold: '#9D7E2E',
 					brown: '#4A3C2A',
 					darkBrown: '#2A2018',
-					beige: '#E8DCCA',
-					maroon: '#800000',
-					black: '#151515',
-					charcoal: '#222222',
+					beige: '#F5F0E5', // Lighter beige for backgrounds
+					cream: '#FFFBF2', // Cream color for backgrounds
+					sand: '#EAE0CC', // Sand tone for accents
+					softGold: '#F0E6C0', // Softer gold for backgrounds
+					text: '#2A2018', // Dark text color for contrast
+					lightText: '#7D7068', // Light text for secondary content
 				},
 			},
 			fontFamily: {
@@ -99,16 +101,21 @@ export default {
 				'fade-in-up': {
 					from: { opacity: '0', transform: 'translateY(20px)' },
 					to: { opacity: '1', transform: 'translateY(0)' }
+				},
+				'slide-in': {
+					from: { opacity: '0', transform: 'translateX(20px)' },
+					to: { opacity: '1', transform: 'translateX(0)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 1.5s ease-out',
-				'fade-in-up': 'fade-in-up 1.2s ease-out'
+				'fade-in-up': 'fade-in-up 1.2s ease-out',
+				'slide-in': 'slide-in 0.8s ease-out'
 			},
 			backgroundImage: {
-				'hero-pattern': "linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url('/public/lovable-uploads/a2fc9b9f-ca33-4c87-9f2e-6e1b87665806.png')",
+				'hero-pattern': "linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(245, 240, 229, 0.5)), url('/public/lovable-uploads/a2fc9b9f-ca33-4c87-9f2e-6e1b87665806.png')",
 				'texture-pattern': "url('/images/texture.jpg')",
 			}
 		}

@@ -1,44 +1,19 @@
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { motion } from "framer-motion";
 
 const ShopHero = () => {
-  const { t, isRTL } = useLanguage();
-  const [activeImage, setActiveImage] = useState(0);
+  const { t, isRTL, language } = useLanguage();
   
-  const heroImages = [
-    "/lovable-uploads/bb67914c-f910-45dd-b446-aeed9a69a0fd.png", // Elegant perfume in archway
-    "/lovable-uploads/e0bc621b-a964-4e70-9b24-c74ab6810dae.png", // Perfume with smoke
-  ];
-
-  // Image transition effect
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveImage((current) => (current === 0 ? 1 : 0));
-    }, 7000); // Transition every 7 seconds
-    
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <section className="relative h-[70vh] min-h-[500px] w-full overflow-hidden flex items-center justify-center">
-      {/* Background image with transition */}
-      {heroImages.map((image, index) => (
-        <div 
-          key={image}
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1500"
-          style={{ 
-            backgroundImage: `url('${image}')`,
-            opacity: index === activeImage ? 1 : 0,
-            filter: "brightness(0.5)",
-            transitionDuration: "1.5s"
-          }}
-        ></div>
-      ))}
-      
-      {/* Subtle gold gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-faran-black/40 via-transparent to-faran-black"></div>
+    <section className="relative py-32 bg-faran-beige">
+      {/* Background pattern */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <div className="absolute inset-0 bg-[url('/lovable-uploads/e163adc4-b7bb-43eb-b9f9-79c9ca278d1a.png')] bg-repeat opacity-5"></div>
+        <div className="absolute top-0 left-0 w-1/3 h-px bg-gradient-to-r from-transparent via-faran-gold to-transparent"></div>
+        <div className="absolute bottom-0 right-0 w-1/3 h-px bg-gradient-to-l from-transparent via-faran-gold to-transparent"></div>
+      </div>
       
       {/* Content */}
       <div className="container-custom relative z-10 text-center px-4">
@@ -48,11 +23,11 @@ const ShopHero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="max-w-3xl mx-auto"
         >
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif mb-6 text-white">
-            {isRTL ? "عطور فاران الحصرية" : "FARAN Exclusive Collection"}
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif mb-6 text-faran-brown">
+            {isRTL ? "مجموعة فاران الحصرية" : "FARAN Exclusive Collection"}
           </h1>
           
-          <p className="text-lg md:text-xl font-light mb-8 text-gray-200 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl font-light mb-8 text-faran-brown/80 max-w-2xl mx-auto">
             {isRTL 
               ? "اكتشف مجموعتنا الحصرية من أرقى أنواع العود والعطور الفاخرة. عبق الأجداد، يُرتدى بفخر ويُورث بعناية."
               : "The scent of ancestry. Passed from palm to palm, tent to palace—FARAN is not merely worn; it is inherited."}
@@ -76,9 +51,6 @@ const ShopHero = () => {
           </div>
         </motion.div>
       </div>
-      
-      {/* Decorative elements */}
-      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-faran-black to-transparent"></div>
     </section>
   );
 };

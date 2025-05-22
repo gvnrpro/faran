@@ -35,10 +35,10 @@ const LanguageSwitcher: React.FC = () => {
   return (
     <button
       onClick={toggleLanguage}
-      className="flex items-center gap-1.5 text-white hover:text-faran-gold transition-colors duration-300"
+      className="flex items-center gap-1.5 text-faran-brown hover:text-faran-gold transition-colors duration-300"
       aria-label={language === "en" ? "Switch to Arabic" : "Switch to English"}
     >
-      <Globe size={16} />
+      <Globe size={16} className="text-faran-gold" />
       <span className="text-sm uppercase tracking-wider">
         {language === "en" ? "العربية" : "English"}
       </span>

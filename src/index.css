@@ -7,33 +7,33 @@
 
 @layer base {
   :root {
-    --background: 36 33% 97%;
+    --background: 40 30% 98%;
     --foreground: 30 25% 10%;
 
-    --card: 36 33% 97%;
+    --card: 40 30% 98%;
     --card-foreground: 30 25% 10%;
 
-    --popover: 36 33% 97%;
+    --popover: 40 30% 98%;
     --popover-foreground: 30 25% 10%;
 
-    --primary: 36 40% 20%;
-    --primary-foreground: 36 33% 97%;
+    --primary: 40 54% 52%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 30 25% 90%;
+    --secondary: 30 25% 95%;
     --secondary-foreground: 30 25% 10%;
 
-    --muted: 30 25% 90%;
+    --muted: 30 25% 95%;
     --muted-foreground: 30 10% 40%;
 
-    --accent: 36 40% 85%;
+    --accent: 40 54% 90%;
     --accent-foreground: 30 25% 10%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 36 33% 97%;
+    --destructive-foreground: 40 30% 98%;
 
-    --border: 30 25% 82%;
-    --input: 30 25% 82%;
-    --ring: 36 40% 40%;
+    --border: 30 25% 85%;
+    --input: 30 25% 85%;
+    --ring: 40 54% 52%;
 
     --radius: 0.25rem;
   }
@@ -44,7 +44,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-faran-cream text-faran-text font-sans;
     -webkit-font-smoothing: antialiased;
   }
   
@@ -53,7 +53,7 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif font-medium;
+    @apply font-serif font-medium text-faran-brown;
   }
   
   h1 {
@@ -69,7 +69,7 @@
   }
   
   p {
-    @apply leading-relaxed;
+    @apply leading-relaxed text-faran-text;
   }
   
   /* Standard buttons */
@@ -78,16 +78,16 @@
   }
   
   .btn-primary {
-    @apply bg-faran-gold text-black hover:bg-faran-darkGold;
+    @apply bg-faran-gold text-white hover:bg-faran-darkGold;
   }
   
   .btn-secondary {
-    @apply bg-transparent border border-faran-gold text-faran-gold hover:bg-faran-gold hover:text-black;
+    @apply bg-transparent border border-faran-gold text-faran-gold hover:bg-faran-gold hover:text-white;
   }
   
   /* Luxury buttons */
   .btn-luxury {
-    @apply inline-flex items-center justify-center px-8 py-4 bg-faran-gold text-black uppercase tracking-wider text-sm font-light transition-all duration-300 hover:bg-faran-darkGold relative overflow-hidden;
+    @apply inline-flex items-center justify-center px-8 py-4 bg-faran-gold text-white uppercase tracking-wider text-sm font-light transition-all duration-300 hover:bg-faran-darkGold relative overflow-hidden shadow-sm;
   }
   
   .btn-luxury::before {
@@ -99,7 +99,7 @@
   }
   
   .btn-luxury-outline {
-    @apply inline-flex items-center justify-center px-8 py-4 border border-faran-gold text-faran-gold uppercase tracking-wider text-sm font-light transition-all duration-300 hover:border-faran-gold/70 hover:text-white relative overflow-hidden;
+    @apply inline-flex items-center justify-center px-8 py-4 border border-faran-gold text-faran-darkGold uppercase tracking-wider text-sm font-light transition-all duration-300 hover:border-faran-darkGold hover:text-faran-brown relative overflow-hidden;
   }
   
   .btn-luxury-outline::after {
@@ -116,7 +116,7 @@
   }
   
   .section-title {
-    @apply relative inline-block mb-16;
+    @apply relative inline-block mb-16 text-faran-brown;
   }
   
   .section-title::after {
@@ -129,7 +129,7 @@
   
   /* Luxury card */
   .luxury-card {
-    @apply relative overflow-hidden bg-faran-charcoal border border-faran-gold/10 transition-all duration-500 hover:border-faran-gold/30;
+    @apply relative overflow-hidden bg-white border border-faran-gold/10 transition-all duration-500 hover:border-faran-gold/30 shadow-sm;
   }
   
   .luxury-card::before {
@@ -294,7 +294,7 @@
   }
   
   .gold-border-content {
-    @apply bg-faran-black z-10 relative w-full h-full;
+    @apply bg-white z-10 relative w-full h-full;
   }
   
   /* Product card hover effect */
@@ -310,7 +310,7 @@
   /* Remove browser outline for accessible navigation */
   a:focus-visible,
   button:focus-visible {
-    @apply outline-none ring-2 ring-faran-gold ring-offset-2 ring-offset-faran-black;
+    @apply outline-none ring-2 ring-faran-gold ring-offset-2 ring-offset-faran-cream;
   }
   
   /* Scrollbar customization */
@@ -319,7 +319,7 @@
   }
   
   ::-webkit-scrollbar-track {
-    background: #151515;
+    background: #F5F0E5;
   }
   
   ::-webkit-scrollbar-thumb {
