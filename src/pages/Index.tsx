@@ -3,13 +3,9 @@ import React, { useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
-import CollectionSection from "@/components/CollectionSection";
-import LegacySection from "@/components/LegacySection";
-import GiftingSection from "@/components/GiftingSection";
-import CraftsmanshipSection from "@/components/CraftsmanshipSection";
+import FeaturedProducts from "@/components/FeaturedProducts";
+import LuxuryExperience from "@/components/LuxuryExperience";
 import TestimonialsSection from "@/components/TestimonialsSection";
-import NewsletterSection from "@/components/NewsletterSection";
 import Footer from "@/components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
 import SEO from "@/components/SEO";
@@ -43,7 +39,6 @@ const Index = () => {
   };
 
   useEffect(() => {
-    // Set RTL/LTR for the whole page
     document.documentElement.dir = isRTL ? "rtl" : "ltr";
     document.documentElement.lang = isRTL ? "ar" : "en";
     
@@ -56,7 +51,7 @@ const Index = () => {
           const targetElement = document.getElementById(targetId);
           if (targetElement) {
             window.scrollTo({
-              top: targetElement.offsetTop - 80, // Account for fixed header
+              top: targetElement.offsetTop - 80,
               behavior: 'smooth'
             });
           }
@@ -64,7 +59,6 @@ const Index = () => {
       });
     });
     
-    // Cleanup event listeners
     return () => {
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.removeEventListener('click', function (e) {
@@ -94,13 +88,9 @@ const Index = () => {
         
         <Navbar />
         <HeroSection />
-        <AboutSection />
-        <CollectionSection />
-        <LegacySection />
-        <GiftingSection />
-        <CraftsmanshipSection />
+        <FeaturedProducts />
+        <LuxuryExperience />
         <TestimonialsSection />
-        <NewsletterSection />
         <Footer />
       </motion.div>
     </AnimatePresence>
