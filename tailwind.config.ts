@@ -74,6 +74,7 @@ export default {
 					// Supporting colors for depth
 					cream: '#FAF8F3',
 					smoke: '#E8E5E0',
+					text: '#2F2F2F',
 				},
 			},
 			fontFamily: {
