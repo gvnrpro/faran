@@ -53,6 +53,7 @@ const config: Config = {
           foreground: "hsl(var(--card-foreground))",
         },
         faran: {
+          brown: "#A0522D", 
           night: "#1B2951",
           darkNight: "#151E3D",
           brass: "#B8860B",
