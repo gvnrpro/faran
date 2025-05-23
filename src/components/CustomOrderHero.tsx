@@ -4,7 +4,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { motion } from "framer-motion";
 
 const CustomOrderHero = () => {
-  const { t, isRTL } = useLanguage();
+  const { isRTL } = useLanguage();
   const [activeImage, setActiveImage] = useState(0);
   
   const heroImages = [
@@ -12,11 +12,10 @@ const CustomOrderHero = () => {
     "/lovable-uploads/4c1298de-d9f2-4fb7-9c77-16568829518c.png"
   ];
 
-  // Image transition effect
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveImage((current) => (current === 0 ? 1 : 0));
-    }, 7000); // Transition every 7 seconds
+    }, 7000);
     
     return () => clearInterval(interval);
   }, []);
@@ -31,14 +30,14 @@ const CustomOrderHero = () => {
           style={{ 
             backgroundImage: `url('${image}')`,
             opacity: index === activeImage ? 1 : 0,
-            filter: "brightness(0.4)",
+            filter: "brightness(0.7)",
             transitionDuration: "1.5s"
           }}
         ></div>
       ))}
       
-      {/* Subtle gold gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-faran-black/40 via-transparent to-faran-black"></div>
+      {/* Elegant overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-faran-cream/20 via-transparent to-faran-brown/40"></div>
       
       {/* Content */}
       <div className="container-custom relative z-10 text-center px-4">
@@ -48,11 +47,11 @@ const CustomOrderHero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="max-w-3xl mx-auto"
         >
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif mb-6 text-white">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif mb-6 text-white drop-shadow-lg">
             {isRTL ? "طلبات مخصصة" : "Custom Orders"}
           </h1>
           
-          <p className="text-lg md:text-xl font-light mb-8 text-gray-200 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl font-light mb-8 text-white/90 max-w-2xl mx-auto drop-shadow-md">
             {isRTL 
               ? "تجربة فريدة من نوعها حيث يقوم حرفيونا بتصميم عود مخصص يعكس هويتك وذوقك الفريد. إرث العطر، مُصمم خصيصًا لك."
               : "An unparalleled experience where our master craftsmen create a bespoke oud that reflects your unique identity and preferences. A fragrance legacy, crafted exclusively for you."}
@@ -62,7 +61,7 @@ const CustomOrderHero = () => {
           
           <a 
             href="#custom-form" 
-            className="btn-luxury-outline px-12 py-4"
+            className="btn-luxury px-12 py-4 text-white border-white hover:bg-white hover:text-faran-brown transition-all duration-300"
           >
             {isRTL ? "ابدأ رحلتك" : "Begin Your Journey"}
           </a>
@@ -70,7 +69,7 @@ const CustomOrderHero = () => {
       </div>
       
       {/* Decorative elements */}
-      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-faran-black to-transparent"></div>
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-faran-cream to-transparent"></div>
     </section>
   );
 };

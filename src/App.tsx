@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import CustomOrders from "./pages/CustomOrders";
 import Shop from "./pages/Shop";
 import ProductDetail from "./pages/ProductDetail";
+import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import { LanguageProvider } from "./contexts/LanguageContext";
 
@@ -28,17 +29,20 @@ const App = () => (
             <Route path="/en" element={<Index />} />
             <Route path="/en/custom-orders" element={<CustomOrders />} />
             <Route path="/en/shop" element={<Shop />} />
+            <Route path="/en/contact" element={<Contact />} />
             <Route path="/en/product/:productId" element={<ProductDetail />} />
             
             {/* Arabic routes */}
             <Route path="/ar" element={<Index />} />
             <Route path="/ar/custom-orders" element={<CustomOrders />} />
             <Route path="/ar/shop" element={<Shop />} />
+            <Route path="/ar/contact" element={<Contact />} />
             <Route path="/ar/product/:productId" element={<ProductDetail />} />
             
             {/* Legacy non-prefixed routes (redirect to language based on user preference) */}
             <Route path="/custom-orders" element={<CustomOrders />} />
             <Route path="/shop" element={<Shop />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/product/:productId" element={<ProductDetail />} />
             
             {/* Catch-all for 404 page */}
