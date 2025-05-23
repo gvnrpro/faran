@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -53,29 +52,47 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				// FARAN custom colors - updated for light theme
+				// FARAN Authentic Arabian Colors
 				faran: {
-					gold: '#D4AF37',
-					darkGold: '#9D7E2E',
-					brown: '#4A3C2A',
-					darkBrown: '#2A2018',
-					beige: '#F5F0E5', // Lighter beige for backgrounds
-					cream: '#FFFBF2', // Cream color for backgrounds
-					sand: '#EAE0CC', // Sand tone for accents
-					softGold: '#F0E6C0', // Softer gold for backgrounds
-					text: '#2A2018', // Dark text color for contrast
-					lightText: '#7D7068', // Light text for secondary content
+					// Desert Night Blue - Deep sophisticated navy
+					night: '#1B2951',
+					darkNight: '#151E3D',
+					
+					// Burnished Brass/Gold - Warm traditional gold
+					brass: '#B8860B',
+					gold: '#D4A574',
+					lightGold: '#E6C799',
+					
+					// Warm Sandstone - Elegant desert architecture
+					sandstone: '#F7F3ED',
+					lightSandstone: '#FDFBF7',
+					
+					// Intricate Charcoal - Bakhoor smoke color
+					charcoal: '#3A3A3A',
+					lightCharcoal: '#5A5A5A',
+					
+					// Supporting colors for depth
+					cream: '#FAF8F3',
+					smoke: '#E8E5E0',
 				},
 			},
 			fontFamily: {
 				serif: ['Playfair Display', 'serif'],
 				sans: ['Montserrat', 'sans-serif'],
 				arabic: ['Noto Sans Arabic', 'sans-serif'],
+				// Adding Amiri for authentic Arabic typography
+				amiri: ['Amiri', 'serif'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			backgroundImage: {
+				'desert-gradient': 'linear-gradient(135deg, #F7F3ED 0%, #FAF8F3 100%)',
+				'night-gradient': 'linear-gradient(135deg, #1B2951 0%, #151E3D 100%)',
+				'brass-gradient': 'linear-gradient(135deg, #B8860B 0%, #D4A574 100%)',
+				'mashrabiya-pattern': "url('/patterns/mashrabiya.svg')",
 			},
 			keyframes: {
 				'accordion-down': {

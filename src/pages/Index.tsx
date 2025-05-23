@@ -3,8 +3,8 @@ import React, { useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import LegacySection from "@/components/LegacySection";
 import FeaturedProducts from "@/components/FeaturedProducts";
-import LuxuryExperience from "@/components/LuxuryExperience";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import Footer from "@/components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
@@ -16,25 +16,25 @@ const Index = () => {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "FARAN",
-    "url": "https://faran.ae",
+    "name": "FARAN - Dar FARAN",
+    "url": "https://faran.ae", 
     "logo": "/lovable-uploads/a206e9b1-f855-4dae-bf84-b9e4a1e92871.png",
-    "description": "Premium luxury oud and fragrances with a rich Arabian heritage.",
+    "description": "Authentic Arabian luxury oud and fragrances. A family legacy of perfumery excellence rooted in heritage, honor, and hospitality.",
     "sameAs": [
       "https://www.instagram.com/faran",
       "https://www.facebook.com/faran"
     ],
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://faran.ae/search?q={search_term_string}",
-      "query-input": "required name=search_term_string"
+    "founders": {
+      "@type": "Person",
+      "name": "FARAN Family Heritage"
     },
-    "offers": {
-      "@type": "AggregateOffer",
-      "priceCurrency": "AED",
-      "highPrice": "5000",
-      "lowPrice": "500",
-      "offerCount": "8"
+    "makesOffer": {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Product",
+        "name": "Premium Arabian Oud Fragrances",
+        "category": "Luxury Perfumes"
+      }
     }
   };
 
@@ -76,9 +76,12 @@ const Index = () => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
-        className={`bg-faran-cream text-faran-brown min-h-screen ${isRTL ? 'rtl' : 'ltr'}`}
+        className={`bg-faran-sandstone text-faran-charcoal min-h-screen ${isRTL ? 'rtl' : 'ltr'}`}
       >
         <SEO 
+          title="FARAN | Authentic Arabian Luxury Oud & Heritage Fragrances"
+          description="Discover FARAN's authentic Arabian luxury oud collection. A family legacy rooted in heritage, honor, and hospitality. Premium fragrances that tell your story."
+          keywords="FARAN, luxury oud, Arabian perfumes, authentic heritage, premium fragrances, Dubai oud, traditional perfumery"
           ogImage="/lovable-uploads/a206e9b1-f855-4dae-bf84-b9e4a1e92871.png"
         >
           <script type="application/ld+json">
@@ -88,8 +91,8 @@ const Index = () => {
         
         <Navbar />
         <HeroSection />
+        <LegacySection />
         <FeaturedProducts />
-        <LuxuryExperience />
         <TestimonialsSection />
         <Footer />
       </motion.div>
