@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -7,6 +8,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import ProductRecommendations from "@/components/ProductRecommendations";
+import Product360Viewer from "@/components/Product360Viewer";
+import MobileWhatsApp from "@/components/MobileWhatsApp";
 import { getProductById, products } from "@/data/products";
 
 const ProductDetail = () => {
@@ -14,6 +17,7 @@ const ProductDetail = () => {
   const { language, isRTL } = useLanguage();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isWishlisted, setIsWishlisted] = useState(false);
+  const [use360View, setUse360View] = useState(false);
 
   const product = productId ? getProductById(productId) : null;
   const relatedProducts = products.filter(p => p.id !== productId).slice(0, 3);
@@ -32,7 +36,12 @@ const ProductDetail = () => {
     if (productId && (window as any).isInWishlist) {
       setIsWishlisted((window as any).isInWishlist(productId));
     }
-  }, [language, isRTL, productId]);
+
+    // Check if product has multiple images for 360° view
+    if (product && product.images.length > 8) {
+      setUse360View(true);
+    }
+  }, [language, isRTL, productId, product]);
 
   if (!product) {
     return (
@@ -113,49 +122,59 @@ const ProductDetail = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
               {/* Product Images */}
               <div className="space-y-4">
-                <div className="relative aspect-square bg-white rounded-lg overflow-hidden shadow-sm">
-                  <img 
-                    src={product.images[currentImageIndex]} 
-                    alt={product.name[language]}
-                    className="w-full h-full object-cover"
+                {use360View ? (
+                  <Product360Viewer 
+                    images={product.images} 
+                    productName={product.name[language]}
+                    autoRotate={false}
                   />
-                  {product.images.length > 1 && (
-                    <>
-                      <button 
-                        onClick={prevImage}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-white/80 hover:bg-white rounded-full shadow-md transition-all"
-                      >
-                        <ArrowLeft size={20} className="text-faran-brown" />
-                      </button>
-                      <button 
-                        onClick={nextImage}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-white/80 hover:bg-white rounded-full shadow-md transition-all"
-                      >
-                        <ArrowRight size={20} className="text-faran-brown" />
-                      </button>
-                    </>
-                  )}
-                </div>
-                
-                {/* Thumbnail Images */}
-                {product.images.length > 1 && (
-                  <div className="flex space-x-2">
-                    {product.images.map((image, index) => (
-                      <button
-                        key={index}
-                        onClick={() => setCurrentImageIndex(index)}
-                        className={`w-20 h-20 rounded-lg overflow-hidden border-2 transition-all ${
-                          index === currentImageIndex ? 'border-faran-gold' : 'border-transparent'
-                        }`}
-                      >
-                        <img 
-                          src={image} 
-                          alt={`${product.name[language]} ${index + 1}`}
-                          className="w-full h-full object-cover"
-                        />
-                      </button>
-                    ))}
-                  </div>
+                ) : (
+                  <>
+                    <div className="relative aspect-square bg-white rounded-lg overflow-hidden shadow-sm">
+                      <img 
+                        src={product.images[currentImageIndex]} 
+                        alt={product.name[language]}
+                        className="w-full h-full object-cover"
+                      />
+                      {product.images.length > 1 && (
+                        <>
+                          <button 
+                            onClick={prevImage}
+                            className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-white/80 hover:bg-white rounded-full shadow-md transition-all"
+                          >
+                            <ArrowLeft size={20} className="text-faran-brown" />
+                          </button>
+                          <button 
+                            onClick={nextImage}
+                            className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-white/80 hover:bg-white rounded-full shadow-md transition-all"
+                          >
+                            <ArrowRight size={20} className="text-faran-brown" />
+                          </button>
+                        </>
+                      )}
+                    </div>
+                    
+                    {/* Thumbnail Images */}
+                    {product.images.length > 1 && (
+                      <div className="flex space-x-2 overflow-x-auto pb-2">
+                        {product.images.map((image, index) => (
+                          <button
+                            key={index}
+                            onClick={() => setCurrentImageIndex(index)}
+                            className={`w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden border-2 transition-all ${
+                              index === currentImageIndex ? 'border-faran-gold' : 'border-transparent'
+                            }`}
+                          >
+                            <img 
+                              src={image} 
+                              alt={`${product.name[language]} ${index + 1}`}
+                              className="w-full h-full object-cover"
+                            />
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </>
                 )}
               </div>
 
@@ -265,6 +284,12 @@ const ProductDetail = () => {
             )}
           </div>
         </main>
+
+        {/* Mobile WhatsApp Integration */}
+        <MobileWhatsApp 
+          productName={product.name[language]}
+          productPrice={`${product.price.amount} ${product.price.currency}`}
+        />
         
         <Footer />
       </motion.div>

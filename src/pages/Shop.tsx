@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import Navbar from "@/components/Navbar";
@@ -9,6 +10,8 @@ import ProductGrid from "@/components/ProductGrid";
 import ScentQuiz from "@/components/ScentQuiz";
 import ProductRecommendations from "@/components/ProductRecommendations";
 import RecentlyViewed from "@/components/RecentlyViewed";
+import VoiceSearch from "@/components/VoiceSearch";
+import MobileWhatsApp from "@/components/MobileWhatsApp";
 
 const Shop = () => {
   const { language, isRTL } = useLanguage();
@@ -66,6 +69,12 @@ const Shop = () => {
         </SEO>
         
         <Navbar />
+        
+        {/* Voice Search Integration */}
+        <div className="fixed top-20 right-6 z-40 hidden md:block">
+          <VoiceSearch />
+        </div>
+        
         <ShopHero />
         
         {/* Scent Discovery Quiz */}
@@ -89,12 +98,17 @@ const Shop = () => {
                   ? "خذ اختبار العطر الشخصي للحصول على توصيات مخصصة"
                   : "Take our personal scent quiz for customized recommendations"}
               </p>
-              <button 
-                onClick={() => setShowQuiz(true)}
-                className="btn-luxury"
-              >
-                {isRTL ? "ابدأ الاختبار" : "Start Quiz"}
-              </button>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <button 
+                  onClick={() => setShowQuiz(true)}
+                  className="btn-luxury"
+                >
+                  {isRTL ? "ابدأ الاختبار" : "Start Quiz"}
+                </button>
+                <div className="hidden sm:block">
+                  <VoiceSearch />
+                </div>
+              </div>
             </div>
           </section>
         )}
@@ -108,6 +122,10 @@ const Shop = () => {
         <RecentlyViewed />
         
         <ProductGrid />
+        
+        {/* Mobile WhatsApp Integration */}
+        <MobileWhatsApp />
+        
         <Footer />
       </motion.div>
     </AnimatePresence>

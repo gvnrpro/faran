@@ -1,0 +1,28 @@
+
+{
+  "name": "FARAN - Premium Luxury Oud & Fragrances",
+  "short_name": "FARAN",
+  "description": "FARAN: The Scent of Ancestry. Premium luxury oud and fragrances with Arabian heritage.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F5F2E8",
+  "theme_color": "#D4AF37",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/lovable-uploads/a206e9b1-f855-4dae-bf84-b9e4a1e92871.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/lovable-uploads/a206e9b1-f855-4dae-bf84-b9e4a1e92871.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["shopping", "lifestyle"],
+  "lang": "en-US",
+  "dir": "auto"
+}
