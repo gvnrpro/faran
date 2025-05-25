@@ -1,5 +1,4 @@
-
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -7,9 +6,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import SEO from "@/components/SEO";
 import ShopHero from "@/components/ShopHero";
 import ProductGrid from "@/components/ProductGrid";
+import ScentQuiz from "@/components/ScentQuiz";
+import ProductRecommendations from "@/components/ProductRecommendations";
+import RecentlyViewed from "@/components/RecentlyViewed";
 
 const Shop = () => {
   const { language, isRTL } = useLanguage();
+  const [showQuiz, setShowQuiz] = useState(false);
+  const [userPreferences, setUserPreferences] = useState(null);
 
   useEffect(() => {
     // Set RTL/LTR for the whole page
@@ -23,6 +27,11 @@ const Shop = () => {
       // Cleanup
     };
   }, [language, isRTL]);
+
+  const handleQuizComplete = (preferences: any) => {
+    setUserPreferences(preferences);
+    setShowQuiz(false);
+  };
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -58,6 +67,46 @@ const Shop = () => {
         
         <Navbar />
         <ShopHero />
+        
+        {/* Scent Discovery Quiz */}
+        {showQuiz && (
+          <section className="py-12 bg-faran-lightSandstone">
+            <div className="container-custom">
+              <ScentQuiz onComplete={handleQuizComplete} />
+            </div>
+          </section>
+        )}
+        
+        {/* Quiz CTA */}
+        {!showQuiz && !userPreferences && (
+          <section className="py-12 bg-faran-lightSandstone">
+            <div className="container-custom text-center">
+              <h3 className="text-2xl font-serif text-faran-brown mb-4">
+                {isRTL ? "لست متأكداً من العطر المناسب؟" : "Not sure which fragrance suits you?"}
+              </h3>
+              <p className="text-faran-brown/80 mb-6">
+                {isRTL 
+                  ? "خذ اختبار العطر الشخصي للحصول على توصيات مخصصة"
+                  : "Take our personal scent quiz for customized recommendations"}
+              </p>
+              <button 
+                onClick={() => setShowQuiz(true)}
+                className="btn-luxury"
+              >
+                {isRTL ? "ابدأ الاختبار" : "Start Quiz"}
+              </button>
+            </div>
+          </section>
+        )}
+        
+        {/* Personalized Recommendations */}
+        {userPreferences && (
+          <ProductRecommendations userPreferences={userPreferences} />
+        )}
+        
+        {/* Recently Viewed */}
+        <RecentlyViewed />
+        
         <ProductGrid />
         <Footer />
       </motion.div>

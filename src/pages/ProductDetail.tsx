@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -7,6 +6,7 @@ import { ArrowLeft, ArrowRight, MessageCircle, Star, Heart, Share2 } from "lucid
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
+import ProductRecommendations from "@/components/ProductRecommendations";
 import { getProductById, products } from "@/data/products";
 
 const ProductDetail = () => {
@@ -22,7 +22,17 @@ const ProductDetail = () => {
     document.documentElement.dir = isRTL ? "rtl" : "ltr";
     document.documentElement.lang = language;
     window.scrollTo(0, 0);
-  }, [language, isRTL]);
+
+    // Add to recently viewed
+    if (productId && (window as any).addToRecentlyViewed) {
+      (window as any).addToRecentlyViewed(productId);
+    }
+
+    // Check if product is in wishlist
+    if (productId && (window as any).isInWishlist) {
+      setIsWishlisted((window as any).isInWishlist(productId));
+    }
+  }, [language, isRTL, productId]);
 
   if (!product) {
     return (
@@ -43,6 +53,22 @@ const ProductDetail = () => {
     const message = `Hello! I'm interested in ordering ${product.name[language]} (${product.price.amount} ${product.price.currency}). Please provide more details.`;
     const whatsappUrl = `https://wa.me/971557993441?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
+  };
+
+  const toggleWishlist = () => {
+    if (!productId) return;
+    
+    if (isWishlisted) {
+      if ((window as any).removeFromWishlist) {
+        (window as any).removeFromWishlist(productId);
+        setIsWishlisted(false);
+      }
+    } else {
+      if ((window as any).addToWishlist) {
+        (window as any).addToWishlist(productId);
+        setIsWishlisted(true);
+      }
+    }
   };
 
   const nextImage = () => {
@@ -178,9 +204,9 @@ const ProductDetail = () => {
                   
                   <div className="flex gap-4">
                     <button 
-                      onClick={() => setIsWishlisted(!isWishlisted)}
+                      onClick={toggleWishlist}
                       className={`flex-1 btn-luxury-outline flex items-center justify-center gap-2 ${
-                        isWishlisted ? 'bg-faran-gold text-white' : ''
+                        isWishlisted ? 'bg-faran-gold text-white border-faran-gold' : ''
                       }`}
                     >
                       <Heart size={16} fill={isWishlisted ? 'currentColor' : 'none'} />
@@ -202,6 +228,9 @@ const ProductDetail = () => {
               </h2>
               <p className="text-faran-brown/80 leading-relaxed">{product.distillationNotes[language]}</p>
             </div>
+
+            {/* Smart Recommendations */}
+            <ProductRecommendations currentProductId={productId} />
 
             {/* Related Products */}
             {relatedProducts.length > 0 && (

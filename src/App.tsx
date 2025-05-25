@@ -10,6 +10,7 @@ import Shop from "./pages/Shop";
 import ProductDetail from "./pages/ProductDetail";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import WishlistPage from "./pages/Wishlist";
 import { LanguageProvider } from "./contexts/LanguageContext";
 
 const queryClient = new QueryClient();
