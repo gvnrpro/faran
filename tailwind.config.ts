@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -57,13 +58,15 @@ const config: Config = {
           night: "#1B2951",
           darkNight: "#151E3D",
           brass: "#B8860B",
-          gold: "#D4A574",
+          gold: "#D4AF37",
+          darkGold: "#B8860B",
           lightGold: "#E6C799",
           sandstone: "#F7F3ED",
           lightSandstone: "#FDFBF7",
           charcoal: "#3A3A3A",
           lightCharcoal: "#5A5A5A",
           cream: "#FAF8F3",
+          beige: "#F5F0E5",
           smoke: "#E8E5E0",
           text: "#2F2F2F",
         },
@@ -82,7 +85,7 @@ const config: Config = {
       backgroundImage: {
         "desert-gradient": "linear-gradient(135deg, #F7F3ED 0%, #FAF8F3 100%)",
         "night-gradient": "linear-gradient(135deg, #1B2951 0%, #151E3D 100%)",
-        "brass-gradient": "linear-gradient(135deg, #B8860B 0%, #D4A574 100%)",
+        "brass-gradient": "linear-gradient(135deg, #B8860B 0%, #D4AF37 100%)",
         "mashrabiya-pattern": "url('/patterns/mashrabiya.svg')",
         "hero-pattern":
           "linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(245, 240, 229, 0.5)), url('/public/lovable-uploads/a2fc9b9f-ca33-4c87-9f2e-6e1b87665806.png')",

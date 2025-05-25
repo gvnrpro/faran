@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Montserrat:wght@100;200;300;400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Montserrat:wght@100;200;300;400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,33 +7,33 @@
 
 @layer base {
   :root {
-    --background: 40 30% 98%;
-    --foreground: 30 25% 10%;
+    --background: 45 20% 97%;
+    --foreground: 210 40% 15%;
 
-    --card: 40 30% 98%;
-    --card-foreground: 30 25% 10%;
+    --card: 45 20% 97%;
+    --card-foreground: 210 40% 15%;
 
-    --popover: 40 30% 98%;
-    --popover-foreground: 30 25% 10%;
+    --popover: 45 20% 97%;
+    --popover-foreground: 210 40% 15%;
 
-    --primary: 40 54% 52%;
+    --primary: 43 74% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 30 25% 95%;
-    --secondary-foreground: 30 25% 10%;
+    --secondary: 35 15% 92%;
+    --secondary-foreground: 210 40% 15%;
 
-    --muted: 30 25% 95%;
-    --muted-foreground: 30 10% 40%;
+    --muted: 35 15% 92%;
+    --muted-foreground: 25 10% 45%;
 
-    --accent: 40 54% 90%;
-    --accent-foreground: 30 25% 10%;
+    --accent: 43 74% 85%;
+    --accent-foreground: 210 40% 15%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 40 30% 98%;
+    --destructive-foreground: 45 20% 97%;
 
-    --border: 30 25% 85%;
-    --input: 30 25% 85%;
-    --ring: 40 54% 52%;
+    --border: 35 15% 85%;
+    --input: 35 15% 85%;
+    --ring: 43 74% 50%;
 
     --radius: 0.25rem;
   }
@@ -51,7 +52,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif font-medium text-faran-brown;
+    @apply font-serif font-medium text-faran-night;
   }
 
   h1 {
@@ -67,29 +68,29 @@
   }
 
   p {
-    @apply leading-relaxed text-faran-text;
+    @apply leading-relaxed text-faran-charcoal;
   }
 
-  /* Standard buttons */
+  /* Enhanced Arabian-inspired buttons */
   .btn {
-    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-none transition-colors duration-300;
+    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-none transition-all duration-300;
   }
 
   .btn-primary {
-    @apply bg-faran-gold text-white hover:bg-faran-darkGold;
+    @apply bg-faran-gold text-white hover:bg-faran-brass hover:shadow-lg transform hover:-translate-y-0.5;
   }
 
   .btn-secondary {
-    @apply bg-transparent border border-faran-gold text-faran-gold hover:bg-faran-gold hover:text-white;
+    @apply bg-transparent border border-faran-gold text-faran-gold hover:bg-faran-gold hover:text-white hover:shadow-lg;
   }
 
-  /* Luxury buttons */
+  /* Luxury Arabian buttons with enhanced effects */
   .btn-luxury {
-    @apply inline-flex items-center justify-center px-8 py-4 bg-faran-gold text-white uppercase tracking-wider text-sm font-light transition-all duration-300 hover:bg-faran-darkGold relative overflow-hidden shadow-sm;
+    @apply inline-flex items-center justify-center px-8 py-4 bg-faran-gold text-white uppercase tracking-wider text-sm font-light transition-all duration-500 hover:bg-faran-brass relative overflow-hidden shadow-md hover:shadow-xl;
   }
 
   .btn-luxury::before {
-    @apply content-[''] absolute top-0 left-0 w-full h-full bg-white/10 transform scale-x-0 origin-left transition-transform duration-500;
+    @apply content-[''] absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transform scale-x-0 origin-left transition-transform duration-700;
   }
 
   .btn-luxury:hover::before {
@@ -97,41 +98,41 @@
   }
 
   .btn-luxury-outline {
-    @apply inline-flex items-center justify-center px-8 py-4 border border-faran-gold text-faran-darkGold uppercase tracking-wider text-sm font-light transition-all duration-300 hover:border-faran-darkGold hover:text-faran-brown relative overflow-hidden;
+    @apply inline-flex items-center justify-center px-8 py-4 border-2 border-faran-gold text-faran-gold uppercase tracking-wider text-sm font-light transition-all duration-500 hover:border-faran-brass hover:text-faran-night relative overflow-hidden;
   }
 
   .btn-luxury-outline::after {
-    @apply content-[''] absolute bottom-0 left-0 w-0 h-px bg-faran-gold transition-all duration-500;
+    @apply content-[''] absolute bottom-0 left-0 w-0 h-0.5 bg-faran-gold transition-all duration-500;
   }
 
   .btn-luxury-outline:hover::after {
     @apply w-full;
   }
 
-  /* Section styling */
+  /* Enhanced section styling */
   .section {
     @apply py-20 md:py-32;
   }
 
   .section-title {
-    @apply relative inline-block mb-16 text-faran-brown;
+    @apply relative inline-block mb-16 text-faran-night;
   }
 
   .section-title::after {
-    @apply content-[''] absolute left-0 -bottom-3 h-px w-20 bg-faran-gold;
+    @apply content-[''] absolute left-0 -bottom-4 h-0.5 w-24 bg-gradient-to-r from-faran-gold to-faran-brass;
   }
 
   .container-custom {
     @apply px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl;
   }
 
-  /* Luxury card */
+  /* Enhanced luxury card with Arabian aesthetics */
   .luxury-card {
-    @apply relative overflow-hidden bg-white border border-faran-gold/10 transition-all duration-500 hover:border-faran-gold/30 shadow-sm;
+    @apply relative overflow-hidden bg-white border border-faran-gold/20 transition-all duration-700 hover:border-faran-gold/50 shadow-sm hover:shadow-xl;
   }
 
   .luxury-card::before {
-    @apply content-[''] absolute top-0 left-0 w-0 h-px bg-faran-gold transition-all duration-700 ease-in-out;
+    @apply content-[''] absolute top-0 left-0 w-0 h-0.5 bg-gradient-to-r from-faran-gold to-faran-brass transition-all duration-1000 ease-in-out;
   }
 
   .luxury-card:hover::before {
@@ -139,14 +140,14 @@
   }
 
   .luxury-card::after {
-    @apply content-[''] absolute top-0 right-0 h-0 w-px bg-faran-gold transition-all duration-700 ease-in-out delay-100;
+    @apply content-[''] absolute top-0 right-0 h-0 w-0.5 bg-gradient-to-b from-faran-gold to-faran-brass transition-all duration-1000 ease-in-out delay-200;
   }
 
   .luxury-card:hover::after {
     @apply h-full;
   }
 
-  /* RTL support */
+  /* Enhanced RTL support for Arabic */
   .rtl {
     direction: rtl;
     text-align: right;
@@ -158,8 +159,8 @@
   }
 
   .rtl .font-serif {
-    font-family: 'Noto Sans Arabic', sans-serif;
-    font-weight: 500;
+    font-family: 'Amiri', 'Noto Sans Arabic', serif;
+    font-weight: 600;
   }
 
   .rtl .font-sans {
@@ -167,11 +168,11 @@
     font-weight: 400;
   }
 
-  /* Animations */
+  /* Enhanced animations */
   @keyframes fadeInUp {
     from {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(30px);
     }
     to {
       opacity: 1;
@@ -180,82 +181,48 @@
   }
 
   @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 
   @keyframes float {
-    0% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-15px);
-    }
-    100% {
-      transform: translateY(0px);
-    }
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
   }
 
   @keyframes pulse {
-    0% {
-      opacity: 0.6;
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0.6;
-    }
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
   }
 
   @keyframes shimmer {
-    0% {
-      background-position: -100% 0;
-    }
-    100% {
-      background-position: 200% 0;
-    }
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
   }
 
-  .fade-in {
-    opacity: 0;
-    animation: fadeIn 1.5s ease-out forwards;
+  @keyframes goldGlow {
+    0%, 100% { box-shadow: 0 0 5px rgba(212, 175, 55, 0.3); }
+    50% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.6); }
   }
 
-  .fade-in-up {
-    opacity: 0;
-    animation: fadeInUp 1.2s ease-out forwards;
-  }
+  .fade-in { animation: fadeIn 1.5s ease-out forwards; opacity: 0; }
+  .fade-in-up { animation: fadeInUp 1.2s ease-out forwards; opacity: 0; }
+  .animate-float { animation: float 6s ease-in-out infinite; }
+  .animate-pulse { animation: pulse 2s ease-in-out infinite; }
+  .animate-gold-glow { animation: goldGlow 3s ease-in-out infinite; }
 
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-
-  .animate-pulse {
-    animation: pulse 2s ease-in-out infinite;
-  }
-
-  .animate-fade-in {
-    animation: fadeIn 1s ease-out forwards;
-    opacity: 0;
-  }
-
-  /* Shimmer effect */
+  /* Enhanced shimmer effect */
   .shimmer {
     background: linear-gradient(90deg, 
       transparent 0%, 
-      rgba(212, 175, 55, 0.1) 50%, 
+      rgba(212, 175, 55, 0.15) 50%, 
       transparent 100%
     );
     background-size: 200% 100%;
-    animation: shimmer 2s infinite;
+    animation: shimmer 3s infinite;
   }
 
-  /* Hover effects */
+  /* Premium hover effects */
   .hover-shine {
     position: relative;
     overflow: hidden;
@@ -271,66 +238,78 @@
     background: linear-gradient(
       to right,
       rgba(255, 255, 255, 0) 0%,
-      rgba(212, 175, 55, 0.15) 50%,
+      rgba(212, 175, 55, 0.2) 50%,
       rgba(255, 255, 255, 0) 100%
     );
     transform: skewX(-25deg);
-    transition: all 0.75s;
+    transition: all 1s;
   }
 
   .hover-shine:hover::after {
     left: 100%;
   }
 
-  /* Gold border effect */
+  /* Arabian geometric border effect */
   .gold-border {
-    @apply relative p-[1px];
+    @apply relative p-[2px];
   }
 
   .gold-border::before {
-    @apply content-[''] absolute inset-0 p-[1px] bg-gradient-to-r from-faran-gold/20 via-faran-gold to-faran-gold/20 -z-10;
+    @apply content-[''] absolute inset-0 p-[2px] bg-gradient-to-r from-faran-gold/30 via-faran-gold to-faran-gold/30 -z-10;
   }
 
   .gold-border-content {
     @apply bg-white z-10 relative w-full h-full;
   }
 
-  /* Product card hover effect */
+  /* Enhanced product card effects */
   .product-card-hover {
     @apply transition-all duration-700;
-    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   }
 
   .product-card-hover:hover {
-    box-shadow: 0 10px 30px -5px rgba(212, 175, 55, 0.2);
+    box-shadow: 0 20px 40px -12px rgba(212, 175, 55, 0.25), 0 8px 16px -4px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
   }
 
-  /* Swiper bullet active color */
-  .swiper-pagination-bullet-active {
-    background-color: #D4AF37 !important;
+  /* Custom scrollbar with Arabian theme */
+  ::-webkit-scrollbar {
+    width: 10px;
   }
 
-  /* Remove browser outline for accessible navigation */
+  ::-webkit-scrollbar-track {
+    background: #F7F3ED;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #D4AF37, #B8860B);
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #D4AF37;
+  }
+
+  /* Focus states for accessibility */
   a:focus-visible,
   button:focus-visible {
     @apply outline-none ring-2 ring-faran-gold ring-offset-2 ring-offset-faran-cream;
   }
 
-  /* Scrollbar customization */
-  ::-webkit-scrollbar {
-    width: 8px;
+  /* Loading states */
+  .loading-shimmer {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
   }
 
-  ::-webkit-scrollbar-track {
-    background: #F5F0E5;
+  /* Filter dropdown styling */
+  .filter-dropdown {
+    @apply bg-white border border-faran-gold/30 rounded-lg shadow-lg;
   }
 
-  ::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, #D4AF37, #9D7E2E);
-    border-radius: 4px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: #D4AF37;
+  .filter-dropdown:focus-within {
+    @apply border-faran-gold shadow-xl;
   }
 }
