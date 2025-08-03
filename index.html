@@ -1,67 +1,798 @@
-
 <!DOCTYPE html>
+
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FARAN | Premium Luxury Oud & Fragrances</title>
-    <meta name="description" content="FARAN: The Scent of Ancestry. Premium luxury oud and fragrances with a rich Arabian heritage, offering exclusive agarwood collections including Salla, Baby Salla, Mouri, and Joura." />
-    <meta name="keywords" content="FARAN, luxury oud, Arabian perfumes, premium fragrances, agarwood, Indian agarwood, Salla, Baby Salla, Mouri, Joura, luxury gifts, Arabic perfumes" />
-    <meta name="author" content="FARAN" />
-    <meta name="robots" content="index, follow" />
-    <meta name="language" content="English" />
-    <link rel="canonical" href="https://faran.ae/" />
-    
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="/manifest.json" />
-    <meta name="theme-color" content="#D4AF37" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="FARAN" />
-    
-    <!-- Favicon -->
-    <link rel="icon" href="/lovable-uploads/a206e9b1-f855-4dae-bf84-b9e4a1e92871.png" type="image/png" />
-    <link rel="apple-touch-icon" href="/lovable-uploads/a206e9b1-f855-4dae-bf84-b9e4a1e92871.png" />
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://faran.ae/" />
-    <meta property="og:title" content="FARAN | Premium Luxury Oud & Fragrances" />
-    <meta property="og:description" content="FARAN: The Scent Inherited. A Legacy in Fragrance. Experience our premium collection of fragrances rooted in Arabian tradition featuring exquisite agarwood varieties." />
-    <meta property="og:image" content="/lovable-uploads/a206e9b1-f855-4dae-bf84-b9e4a1e92871.png" />
-    <meta property="og:site_name" content="FARAN" />
-    <meta property="og:locale" content="en_US" />
-    
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://faran.ae/" />
-    <meta name="twitter:title" content="FARAN | Premium Luxury Oud & Fragrances" />
-    <meta name="twitter:description" content="FARAN: The Scent Inherited. A Legacy in Fragrance. Experience our premium collection of fragrances rooted in Arabian tradition featuring exquisite agarwood varieties." />
-    <meta name="twitter:image" content="/lovable-uploads/a206e9b1-f855-4dae-bf84-b9e4a1e92871.png" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precedential Legal Consultancy - Premium Brochure</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap');
 
-    <!-- Preload critical resources -->
-    <link rel="preload" href="/lovable-uploads/a206e9b1-f855-4dae-bf84-b9e4a1e92871.png" as="image" />
-  </head>
+```
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-  <body>
-    <div id="root"></div>
-    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx"></script>
-    
-    <!-- PWA Service Worker Registration -->
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js')
-            .then((registration) => {
-              console.log('SW registered: ', registration);
-            })
-            .catch((registrationError) => {
-              console.log('SW registration failed: ', registrationError);
-            });
-        });
-      }
-    </script>
-  </body>
-</html>
+    body {
+        font-family: 'Inter', sans-serif;
+        line-height: 1.6;
+        color: #1a2951;
+        background: #f8fafb;
+        overflow-x: auto;
+    }
+
+    .brochure-container {
+        display: flex;
+        width: calc(4 * 210mm);
+        height: 297mm;
+        margin: 20px auto;
+        box-shadow: 0 25px 50px rgba(26, 41, 81, 0.15);
+        border-radius: 0;
+        overflow: hidden;
+    }
+
+    .panel {
+        width: 210mm;
+        height: 297mm;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Hexagonal Logo System */
+    .hex-logo {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #c49b61 0%, #ddbf94 50%, #c49b61 100%);
+        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        margin: 0 auto;
+    }
+
+    .hex-logo::before {
+        content: '';
+        width: 70px;
+        height: 70px;
+        background: #1a2951;
+        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        position: absolute;
+    }
+
+    .hex-content {
+        position: relative;
+        z-index: 2;
+        color: #c49b61;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        font-weight: 600;
+    }
+
+    .scales-icon {
+        width: 24px;
+        height: 24px;
+        fill: currentColor;
+    }
+
+    /* Panel 1: Front Cover */
+    .front-cover {
+        background: linear-gradient(135deg, #1a2951 0%, #2d3e6b 50%, #1a2951 100%);
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 40mm;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .front-cover::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: 
+            linear-gradient(45deg, transparent 30%, rgba(196, 155, 97, 0.03) 31%, rgba(196, 155, 97, 0.03) 32%, transparent 33%),
+            linear-gradient(-45deg, transparent 30%, rgba(196, 155, 97, 0.03) 31%, rgba(196, 155, 97, 0.03) 32%, transparent 33%);
+        background-size: 20px 20px;
+        z-index: 1;
+    }
+
+    .justice-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 300px;
+        height: 300px;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g opacity="0.05" fill="white"><circle cx="50" cy="25" r="8"/><rect x="47" y="33" width="6" height="40"/><rect x="35" y="45" width="12" height="2"/><rect x="53" y="45" width="12" height="2"/><circle cx="41" cy="52" r="6" fill="none" stroke="white" stroke-width="1"/><circle cx="59" cy="52" r="6" fill="none" stroke="white" stroke-width="1"/><polygon points="45,75 55,75 52,85 48,85" fill="white"/></g></svg>') center/contain no-repeat;
+        z-index: 1;
+    }
+
+    .front-logo-section {
+        z-index: 2;
+        margin-bottom: 40px;
+        position: relative;
+    }
+
+    .front-logo {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 25px;
+    }
+
+    .company-name {
+        font-family: 'Playfair Display', serif;
+        font-size: 42px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        letter-spacing: -0.5px;
+        color: white;
+    }
+
+    .company-tagline {
+        font-size: 14px;
+        font-weight: 300;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #c49b61;
+        margin-bottom: 15px;
+    }
+
+    .company-subtitle {
+        font-size: 12px;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.8);
+        font-style: italic;
+        margin-bottom: 30px;
+    }
+
+    .hero-content {
+        z-index: 2;
+        max-width: 350px;
+        position: relative;
+    }
+
+    .hero-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 28px;
+        font-weight: 600;
+        line-height: 1.3;
+        margin-bottom: 15px;
+        color: white;
+    }
+
+    .hero-subtitle {
+        font-size: 15px;
+        font-weight: 300;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 25px;
+    }
+
+    .contact-badge {
+        background: rgba(196, 155, 97, 0.15);
+        border: 1px solid rgba(196, 155, 97, 0.3);
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-size: 12px;
+        color: #c49b61;
+        z-index: 2;
+        position: relative;
+    }
+
+    /* Panel 2: Services */
+    .services-panel {
+        background: linear-gradient(135deg, #f8fafb 0%, #ffffff 100%);
+        padding: 20mm;
+        position: relative;
+    }
+
+    .services-panel::before {
+        content: '';
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 150px;
+        height: 150px;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g opacity="0.03" fill="%231a2951"><polygon points="50,10 80,30 80,70 50,90 20,70 20,30"/><polygon points="50,20 70,32 70,68 50,80 30,68 30,32"/></g></svg>') no-repeat center;
+        transform: rotate(15deg);
+        z-index: 1;
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 25px;
+        z-index: 2;
+        position: relative;
+    }
+
+    .section-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 24px;
+        font-weight: 600;
+        color: #1a2951;
+        margin-bottom: 8px;
+        position: relative;
+    }
+
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -6px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 2px;
+        background: linear-gradient(90deg, #c49b61, #ddbf94);
+    }
+
+    .section-subtitle {
+        font-size: 13px;
+        color: #6b7394;
+        font-weight: 400;
+    }
+
+    .core-areas {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        margin-bottom: 20px;
+        z-index: 2;
+        position: relative;
+    }
+
+    .core-area {
+        background: white;
+        padding: 12px;
+        border-radius: 6px;
+        box-shadow: 0 1px 6px rgba(26, 41, 81, 0.08);
+        border-left: 3px solid #c49b61;
+        font-size: 11px;
+        font-weight: 500;
+        color: #1a2951;
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 20px;
+        z-index: 2;
+        position: relative;
+    }
+
+    .service-category {
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(26, 41, 81, 0.08);
+        border-left: 4px solid #c49b61;
+        position: relative;
+    }
+
+    .service-category::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 25px;
+        height: 25px;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><polygon points="10,2 18,7 18,13 10,18 2,13 2,7" fill="none" stroke="rgba(196,155,97,0.2)" stroke-width="1"/></svg>') no-repeat center;
+    }
+
+    .service-category-title {
+        font-size: 13px;
+        font-weight: 600;
+        color: #1a2951;
+        margin-bottom: 6px;
+    }
+
+    .service-items {
+        font-size: 10px;
+        color: #6b7394;
+        line-height: 1.4;
+    }
+
+    .subscription-offer {
+        background: linear-gradient(135deg, #1a2951 0%, #2d3e6b 100%);
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        z-index: 2;
+        margin-top: 15px;
+    }
+
+    .subscription-offer::before {
+        content: '';
+        position: absolute;
+        top: -30px;
+        right: -30px;
+        width: 100px;
+        height: 100px;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="50,10 80,30 80,70 50,90 20,70 20,30" fill="none" stroke="rgba(196,155,97,0.1)" stroke-width="2"/></svg>') no-repeat center;
+        z-index: 1;
+    }
+
+    .subscription-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .subscription-badge {
+        background: #c49b61;
+        color: #1a2951;
+        font-size: 9px;
+        font-weight: 600;
+        padding: 3px 10px;
+        border-radius: 10px;
+        display: inline-block;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .subscription-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 6px;
+    }
+
+    .subscription-desc {
+        font-size: 11px;
+        opacity: 0.9;
+        margin-bottom: 8px;
+    }
+
+    .subscription-price {
+        font-size: 14px;
+        font-weight: 600;
+        color: #c49b61;
+    }
+
+    /* Panel 3: About & Why Choose Us */
+    .about-panel {
+        background: white;
+        padding: 20mm;
+        position: relative;
+    }
+
+    .about-panel::before {
+        content: '';
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        width: 120px;
+        height: 120px;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g opacity="0.03" fill="%23c49b61"><rect x="20" y="40" width="8" height="35"/><rect x="32" y="35" width="8" height="40"/><rect x="44" y="30" width="8" height="45"/><rect x="56" y="25" width="8" height="50"/><rect x="68" y="20" width="8" height="55"/></g></svg>') no-repeat;
+        z-index: 1;
+    }
+
+    .about-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .about-text {
+        font-size: 12px;
+        color: #4a5578;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        text-align: justify;
+    }
+
+    .why-choose-section {
+        margin-bottom: 20px;
+    }
+
+    .why-choose-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+
+    .why-choose-item {
+        background: linear-gradient(45deg, #f8fafb, #ffffff);
+        padding: 10px 12px;
+        border-radius: 6px;
+        border-left: 3px solid #c49b61;
+        font-size: 11px;
+        color: #1a2951;
+        font-weight: 500;
+        box-shadow: 0 1px 3px rgba(26, 41, 81, 0.1);
+    }
+
+    .philosophy-section {
+        background: linear-gradient(45deg, #f8fafb, #ffffff);
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 8px rgba(26, 41, 81, 0.08);
+    }
+
+    .philosophy-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 16px;
+        font-weight: 600;
+        color: #1a2951;
+        margin-bottom: 8px;
+        text-align: center;
+    }
+
+    .philosophy-tagline {
+        font-size: 12px;
+        color: #c49b61;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .philosophy-text {
+        font-size: 11px;
+        color: #4a5578;
+        line-height: 1.5;
+        text-align: justify;
+    }
+
+    .vision-mission {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .vision-card, .mission-card {
+        background: linear-gradient(45deg, #f8fafb, #ffffff);
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(26, 41, 81, 0.08);
+    }
+
+    .vision-card h4, .mission-card h4 {
+        font-size: 14px;
+        font-weight: 600;
+        color: #1a2951;
+        margin-bottom: 8px;
+    }
+
+    .vision-card p, .mission-card p {
+        font-size: 10px;
+        color: #4a5578;
+        line-height: 1.4;
+    }
+
+    /* Panel 4: Contact & Back Cover */
+    .back-cover {
+        background: linear-gradient(135deg, #1a2951 0%, #2d3e6b 100%);
+        color: white;
+        padding: 20mm;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .back-cover::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="hexPattern" x="0" y="0" width="30" height="26" patternUnits="userSpaceOnUse"><polygon points="15,2 27,9 27,21 15,28 3,21 3,9" fill="none" stroke="rgba(196,155,97,0.05)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23hexPattern)"/></svg>') repeat;
+        z-index: 1;
+    }
+
+    .contact-section {
+        z-index: 2;
+        position: relative;
+    }
+
+    .contact-header {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .contact-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 6px;
+        position: relative;
+    }
+
+    .contact-title::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 2px;
+        background: linear-gradient(90deg, #c49b61, #ddbf94);
+    }
+
+    .contact-subtitle {
+        font-size: 12px;
+        color: #c49b61;
+        font-weight: 400;
+    }
+
+    .main-contact {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(196, 155, 97, 0.2);
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        margin-bottom: 25px;
+        backdrop-filter: blur(10px);
+    }
+
+    .main-contact-item {
+        margin-bottom: 12px;
+    }
+
+    .main-contact-item:last-child {
+        margin-bottom: 0;
+    }
+
+    .contact-label {
+        font-size: 10px;
+        color: #c49b61;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 2px;
+    }
+
+    .contact-value {
+        font-size: 13px;
+        color: white;
+        font-weight: 500;
+    }
+
+    .confidence-section {
+        background: rgba(196, 155, 97, 0.1);
+        border: 1px solid rgba(196, 155, 97, 0.2);
+        padding: 18px;
+        border-radius: 10px;
+        text-align: center;
+        margin-bottom: 20px;
+        z-index: 2;
+        position: relative;
+    }
+
+    .confidence-title {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: white;
+    }
+
+    .confidence-text {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.5;
+    }
+
+    .footer-branding {
+        text-align: center;
+        margin-top: auto;
+        z-index: 2;
+        position: relative;
+    }
+
+    .footer-logo {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto 12px;
+    }
+
+    .footer-text {
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 6px;
+        line-height: 1.4;
+    }
+
+    .license-text {
+        font-size: 9px;
+        color: rgba(196, 155, 97, 0.8);
+        font-style: italic;
+        line-height: 1.3;
+    }
+
+    .fold-indicator {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        background: rgba(26, 41, 81, 0.9);
+        color: #c49b61;
+        padding: 10px 15px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 500;
+        z-index: 1000;
+        border: 1px solid rgba(196, 155, 97, 0.3);
+    }
+
+    @media print {
+        body {
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+            background: white;
+        }
+        
+        .brochure-container {
+            margin: 0;
+            box-shadow: none;
+        }
+        
+        .fold-indicator {
+            display: none;
+        }
+    }
+
+    @media (max-width: 1400px) {
+        .brochure-container {
+            width: 100%;
+            height: auto;
+            flex-direction: column;
+        }
+        
+        .panel {
+            width: 100%;
+            height: auto;
+            min-height: 100vh;
+        }
+        
+        .fold-indicator {
+            position: relative;
+            margin: 20px auto;
+            width: fit-content;
+        }
+    }
+</style>
+```
+
+</head>
+<body>
+    <div class="fold-indicator">
+        Premium Bi-fold Brochure - Scroll horizontally →
+    </div>
+
+```
+<div class="brochure-container">
+    <!-- Panel 1: Front Cover -->
+    <div class="panel front-cover">
+        <div class="justice-overlay"></div>
+        
+        <div class="front-logo-section">
+            <div class="hex-logo front-logo">
+                <div class="hex-content">
+                    <svg class="scales-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12,2A2,2 0 0,1 14,4C14,4.74 13.6,5.39 13,5.73V7H14A7,7 0 0,1 21,14H22V16H21A7,7 0 0,1 14,23H10A7,7 0 0,1 3,16H2V14H3A7,7 0 0,1 10,7H11V5.73C10.4,5.39 10,4.74 10,4A2,2 0 0,1 12,2M16.5,9C15.12,9 14,10.12 14,11.5C14,12.88 15.12,14 16.5,14C17.88,14 19,12.88 19,11.5C19,10.12 17.88,9 16.5,9M7.5,9C6.12,9 5,10.12 5,11.5C5,12.88 6.12,14 7.5,14C8.88,14 10,12.88 10,11.5C10,10.12 8.88,9 7.5,9Z"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="company-name">PRECEDENTIAL</div>
+            <div class="company-tagline">Legal Consultancy</div>
+            <div class="company-subtitle">UAE-Licensed Legal Consulting Firm</div>
+        </div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title">Legal Support. Practical Strategy. Real Results.</h1>
+            <p class="hero-subtitle">Comprehensive legal support for individuals and businesses across the Emirates, combining deep UAE law knowledge with international standards.</p>
+            <div class="contact-badge">
+                Trusted Legal Partnership<br>
+                Empowering Decisions & Driving Growth
+            </div>
+        </div>
+    </div>
+
+    <!-- Panel 2: Services -->
+    <div class="panel services-panel">
+        <div class="section-header">
+            <h2 class="section-title">Core Practice Areas</h2>
+            <p class="section-subtitle">Comprehensive legal solutions across key practice areas</p>
+        </div>
+        
+        <div class="core-areas">
+            <div class="core-area">Criminal Defense</div>
+            <div class="core-area">Family Law</div>
+            <div class="core-area">Business & Corporate Law</div>
+            <div class="core-area">Civil Litigation</div>
+            <div class="core-area">Real Estate & Tenancy Law</div>
+            <div class="core-area">Immigration & Residency</div>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-category">
+                <h3 class="service-category-title">Corporate & Commercial Law</h3>
+                <div class="service-items">Company Formation • Contract Drafting & Review • M&A • Shareholder Agreements • Regulatory Compliance • Business Succession Planning</div>
+            </div>
+            
+            <div class="service-category">
+                <h3 class="service-category-title">Dispute Resolution & Litigation</h3>
+                <div class="service-items">Pre-litigation Strategy • Arbitration & Mediation • Cheque Bounce Cases • UAE Judgment Enforcement</div>
+            </div>
+            
+            <div class="service-category">
+                <h3 class="service-category-title">Employment & Labour Law</h3>
+                <div class="service-items">UAE Labour Law Advisory • Termination Claims • Arbitrary Dismissal Cases • HR Policies & Contract Drafting</div>
+            </div>
+            
+            <div class="service-category">
+                <h3 class="service-category-title">Family & Estate Management</h3>
+                <div class="service-items">UAE Family & Divorce Law • Wills & Guardianship • Estate Planning • Cross-border Inheritance</div>
+            </div>
+            
+            <div class="service-category">
+                <h3 class="service-category-title">Property & Rental Law</h3>
+                <div class="service-items">Tenancy Dispute Resolution • Property Transfer & Mortgage • Custom Landlord-Tenant Contracts</div>
+            </div>
+            
+            <div class="service-category">
+                <h3 class="service-category-title">Personal Legal Services</h3>
+                <div class="service-items">Travel Ban Resolution • Personal Injury Claims • Document Notarization • IP & Innovation Law</div>
+            </div>
+        </div>
+
+        <div class="subscription-offer">
+            <div class="subscription-content">
+                <span class="subscription-badge">SME Solution</span>
+                <h3 class="subscription-title">Subscription-Based Legal Support</h3>
+                <p class="subscription-desc">Unlimited Legal Support – One Predictable Price</p>
+                <div class="subscription-price">From AED 5,000/month</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Panel 3: About & Why Choose Us -->
+    <div class="panel about-panel">
+        <div class="about-content">
+            <div class="section-header">
+                <h2 class="section-title">About Precedential</h2>
+                <p class="section-subtitle">Your trusted legal partner in the UAE</p>
+            </div>
+            
+            <p class="about-text">
+                <strong>Precedential Legal Consultancy FZ LLC</strong> is a UAE-licensed firm committed to providing comprehensive legal support to individuals and businesses across the Emirates. We combine deep knowledge of UAE law with international standards to deliver legal solutions that are clear, strategic, and commercially relevant.
+            </p>
+            
+            <p class="about-text">
+                In today's fast-moving business environment, legal compliance is no longer enough—what clients need is <strong>trusted, proactive legal partnership</strong> that empowers decisions and drives sustainable growth.
+            </p>
+
+            <div class="why-choose-section">
+                <h3 class="section-title" style="font-size: 16px; margin-bottom: 15px;">Why Choose Precedential</h3>
+                
+                <div class="why-choose-list">
+                    <div class="why-choose-item">✅ Experts in UAE Law & Regulatory Frameworks</div>
+                    <div class="why-choose-item">🌍 Multidisciplinary Team with International Perspective</div>
+                    <div class="why-choose-item">🤝 Client-Centered, Outcome-Driven Legal Strategies</div>
+                    <div class="why-choose-item">💡 Transparent Pricing & Clear Communication</div>
+                    <div class="why-choose-item">🔄 Ongoing Support Beyond the Case</div>
+                </div>
+            </div>
+
+            <div class="philosophy-section">
+                <h4 class="philosophy-title">Our Philosophy</h4>
+                <div class="philosophy-tagline">Guidance. Advocacy. Results.</div>
+                <p class="philosophy-text">
+                    Precedential was founded on a simple belief: <strong>legal advice should feel like a strategic partnership—not a last resort</strong>. We serve business owners, entrepreneurs, and individuals who want <strong>answers—not legal jargon
+```
